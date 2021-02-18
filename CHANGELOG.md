@@ -1,11 +1,14 @@
 <p align="center"><h2>[Unreleased] (Only in SleepingOwl <code class="language-php">8+</code> branch)</h2></p>
 
+## 2021-02-06
+* [Fix] Fix `AdminFormElement::image('image', 'Image')->setAssetPrefix($string)` in form.
+* [Update] NPM packages:
+  - axios: 0.20.0 -> 0.21.1
 
 ## 2021-01-14
 * [Add] `AdminFormElement::files('relation')->addTextField('field', 'placeholder', 'label')->setTextRequired((bool))->addCheckboxField('field', 'label')`.
  `addTextField` - добавляет новое текстовое поле, `placeholder` & `label` могут быть не указаны.
 `setTextRequired` - установка обязанности заполнения последнего добавленого через `addTextField` поля. `addCheckboxField` добавляет чекбокс для карточки файлса
-
 
 ## 2021-01-03
 * [Fix] Fix display column `count` searchable and orderable.
@@ -69,12 +72,12 @@
 AdminColumnEditable::number('count', 'Count')
   ->setMin(-25) //not required
   ->setMax(30) //not required
-  ->setStep(5) //not required
+  ->setStep(5); //not required
 
 AdminColumnEditable::range('range', 'Power')
   ->setMin(-25) //not required
   ->setMax(30) //not required
-  ->setStep(5) //not required
+  ->setStep(5); //not required
 ```
 
 
@@ -164,10 +167,10 @@ Deleted:
 AdminColumn::checkbox()
   ->setVisibled(function($item){
     return $item->id < 3;
-  }),
+  });
 
 //or
-AdminColumn::link('title', 'Title')->setVisibled(false),
+AdminColumn::link('title', 'Title')->setVisibled(false);
 ```
 
 
