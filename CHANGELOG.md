@@ -2,6 +2,9 @@
 ## 2021-02-06
 * [Fix] Fixed editable columns (checkbox, datetime, number, select, text & textarea) saving on relations.
 
+## 2021-02-25
+* [Fix] Fix loading image, images, file, files in `AdminFormElement::hasMany()`: `AdminFormElement::image('image', 'Изображение')`, `AdminFormElement::images('images', 'Изображения')`, `AdminFormElement::file( 'file', 'Файл')`, `AdminFormElement::files('files', 'Файлы')`. В путь добавляется название имени FormElement.
+
 ## 2021-02-06
 * [Fix] Fix `AdminFormElement::image('image', 'Image')->setAssetPrefix($string)` in form.
 * [Update] NPM packages:

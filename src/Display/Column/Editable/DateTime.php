@@ -4,6 +4,7 @@ namespace SleepingOwl\Admin\Display\Column\Editable;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 use SleepingOwl\Admin\Contracts\Display\ColumnEditableInterface;
 use SleepingOwl\Admin\Form\FormDefault;
@@ -103,11 +104,9 @@ class DateTime extends EditableColumn implements ColumnEditableInterface
      */
     public function toArray()
     {
-        $value = $this->getModelValue();
-
         return array_merge(parent::toArray(), [
             'id' => $this->getModel()->getKey(),
-            'value' => $this->getFormatedDate($value),
+            'value' => $this->getFormatedDate($this->getModelValue()),
             'isEditable' => $this->getReadonly(),
             'url' => $this->getUrl(),
 
@@ -225,7 +224,7 @@ class DateTime extends EditableColumn implements ColumnEditableInterface
         }
 
         $array = [];
-        array_set($array, $this->getName(), $value);
+        Arr::set($array, $this->getName(), $value);
 
         $request->merge($array);
 

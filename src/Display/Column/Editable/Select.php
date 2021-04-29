@@ -257,7 +257,7 @@ class Select extends EditableColumn implements ColumnEditableInterface
         ]);
 
         $array = [];
-        array_set($array, $this->getName(), $request->input('value', $this->getDefaultValue()));
+        Arr::set($array, $this->getName(), $request->input('value', $this->getDefaultValue()));
 
         $request->merge($array);
 

@@ -4,6 +4,7 @@ namespace SleepingOwl\Admin\Form\Related;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use SleepingOwl\Admin\Form\Element\File;
 
 class Group extends Collection
 {
@@ -22,7 +23,7 @@ class Group extends Collection
     public function __construct(Model $model = null, $items = [])
     {
         $this->model = $model;
-
+        $this->setIfNeedPathFieldImage($items);
         parent::__construct($items);
     }
 
@@ -80,5 +81,19 @@ class Group extends Collection
     public function getLabel()
     {
         return is_callable($this->label) ? call_user_func($this->label, $this) : $this->label;
+    }
+
+    //Функция устанавливает url для элеметов Image, Images, File, Files, если не может определить название field при динамическом добавлении группы полей
+    public function setIfNeedPathFieldImage($items)
+    {
+        if (is_null($this->model)) {
+            foreach ($items as $item) {
+                if ($item instanceof File) {
+                    if (! $item->getPath()) {
+                        $item->setPath($item->getName());
+                    }
+                }
+            }
+        }
     }
 }

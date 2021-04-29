@@ -359,7 +359,6 @@ class Files extends Images
      */
     public function getValueFromModel()
     {
-        // $value = $this->model->{$this->name};
         $value = parent::getValueFromModel();
         if (is_array($value)) {
             // Some hooks)
@@ -463,9 +462,7 @@ class Files extends Images
      */
     public function toArray()
     {
-        $return = parent::toArray();
-
-        $return = array_merge($return, [
+        return array_merge(parent::toArray(), [
             'files_group_class' => $this->files_group_class,
             'show_title' => $this->show_title,
             'show_description' => $this->show_description,
@@ -474,7 +471,5 @@ class Files extends Images
             'text_fields' => $this->text_fields,
             'checkboxes' => $this->checkboxes,
         ]);
-
-        return $return;
     }
 }

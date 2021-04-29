@@ -3,6 +3,7 @@
 namespace SleepingOwl\Admin\Display\Column\Editable;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use SleepingOwl\Admin\Contracts\Display\ColumnEditableInterface;
 use SleepingOwl\Admin\Form\FormDefault;
 
@@ -41,7 +42,7 @@ class Text extends EditableColumn implements ColumnEditableInterface
 
         $model = $this->getModel();
         $array = [];
-        array_set($array, $this->getName(), $request->input('value', null));
+        Arr::set($array, $this->getName(), $request->input('value', null));
 
         $request->merge($array);
 
