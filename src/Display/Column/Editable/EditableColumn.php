@@ -38,9 +38,9 @@ class EditableColumn extends NamedColumn
      * @param             $name
      * @param             $label
      */
-    public function __construct($name, $label = null)
+    public function __construct($name, $label = null, $small = null)
     {
-        parent::__construct($name, $label);
+        parent::__construct($name, $label, $small);
 
         $this->clearHtmlAttributes();
     }
@@ -153,15 +153,17 @@ class EditableColumn extends NamedColumn
      */
     public function isReadonly()
     {
+
+        // Add policy
         if ($this->getModelConfiguration()->isEditable($this->getModel())) {
             if (is_callable($this->readonlyEditable)) {
                 return (bool) call_user_func($this->readonlyEditable, $this->getModel());
             }
-        } else {
-            return false;
+
+            return (bool) $this->readonlyEditable;
         }
 
-        return (bool) $this->readonlyEditable;
+        return true;
     }
 
     /**
@@ -184,7 +186,7 @@ class EditableColumn extends NamedColumn
         return parent::toArray() + [
             'id' => $this->getModel()->getKey(),
             'value' => $this->getModelValue(),
-            'isEditable' => $this->isReadonly(),
+            'isReadonly' => $this->isReadonly(),
             'url' => $this->getUrl(),
             'title' => $this->getTitle(),
             'mode' => $this->getEditableMode(),

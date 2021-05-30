@@ -15,11 +15,14 @@ use SleepingOwl\Admin\Contracts\WithModelInterface;
 use SleepingOwl\Admin\Display\Column\OrderByClause;
 use SleepingOwl\Admin\Traits\Assets;
 use SleepingOwl\Admin\Traits\Renderable;
+use SleepingOwl\Admin\Traits\SmallDisplay;
 use SleepingOwl\Admin\Traits\VisibleCondition;
+use SleepingOwl\Admin\Traits\Visibled;
 
 abstract class TableColumn implements ColumnInterface
 {
     use HtmlAttributes, Assets, Renderable, VisibleCondition;
+    use SmallDisplay, Visibled;
 
     /**
      * @var \Closure
