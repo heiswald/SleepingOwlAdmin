@@ -66,9 +66,6 @@
         ]
     },
     "extra": {
-        "branch-alias": {
-            "dev-development": "dev-development"
-        },
         "laravel": {
             "providers": [
                 "SleepingOwl\\Admin\\Providers\\SleepingOwlServiceProvider"
