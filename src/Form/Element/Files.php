@@ -29,9 +29,26 @@ class Files extends Images
 
     protected $checkboxes = [];
 
+    protected $show_original_name = false;
+
+    public function __construct($path, $label = null)
+    {
+        parent::__construct($path, $label);
+
+        /**
+         * Because of Files extends Images, and Images extends Image, we need
+         * to redefine upload validation rules at __constructor(), because of
+         * Image use custom validation rule - ImageExtended(), which can not
+         * be defined via class attribute on definition.
+         *
+         * @see \SleepingOwl\Admin\Form\Element\Image::__construct
+         */
+        $this->uploadValidationRules = ['required'];
+    }
+
+
     /**
-     * @param bool $bool
-     *
+     * @param  bool  $bool
      * @return $this
      */
     public function showTitle($bool)
@@ -42,8 +59,7 @@ class Files extends Images
     }
 
     /**
-     * @param bool $bool
-     *
+     * @param  bool  $bool
      * @return $this
      */
     public function showDescription($bool)
@@ -54,8 +70,18 @@ class Files extends Images
     }
 
     /**
-     * @param bool $bool
-     *
+     * @param $bool
+     * @return $this
+     */
+    public function showOriginalName($bool)
+    {
+        $this->show_original_name = $bool;
+
+        return $this;
+    }
+
+    /**
+     * @param  bool  $bool
      * @return $this
      */
     public function setTitleRequired($bool)
@@ -66,8 +92,7 @@ class Files extends Images
     }
 
     /**
-     * @param bool $bool
-     *
+     * @param  bool  $bool
      * @return $this
      */
     public function setDescriptionRequired($bool)
@@ -159,7 +184,7 @@ class Files extends Images
 
     /**
      * @param $driver
-     * @param array $driverOptions
+     * @param  array  $driverOptions
      * @return $this
      */
     public function setDriver($driver, $driverOptions = [])
@@ -187,8 +212,7 @@ class Files extends Images
     }
 
     /**
-     * @param UploadedFile $file
-     *
+     * @param  UploadedFile  $file
      * @return mixed
      */
     public function getUploadPath(UploadedFile $file)
@@ -201,8 +225,7 @@ class Files extends Images
     }
 
     /**
-     * @param Closure $uploadPath
-     *
+     * @param  Closure  $uploadPath
      * @return $this
      */
     public function setUploadPath(Closure $uploadPath)
@@ -213,8 +236,7 @@ class Files extends Images
     }
 
     /**
-     * @param UploadedFile $file
-     *
+     * @param  UploadedFile  $file
      * @return string
      */
     public function getUploadFileName(UploadedFile $file)
@@ -227,8 +249,7 @@ class Files extends Images
     }
 
     /**
-     * @param Closure $uploadFileName
-     *
+     * @param  Closure  $uploadFileName
      * @return $this
      */
     public function setUploadFileName(Closure $uploadFileName)
@@ -251,8 +272,7 @@ class Files extends Images
     }
 
     /**
-     * @param array $imageSettings
-     *
+     * @param  array  $imageSettings
      * @return $this
      */
     public function setUploadSettings(array $imageSettings)
@@ -263,8 +283,8 @@ class Files extends Images
     }
 
     /**
-     * @param string $rule
-     * @param null $message
+     * @param  string  $rule
+     * @param  null  $message
      * @return $this|\SleepingOwl\Admin\Form\Element\File|\SleepingOwl\Admin\Form\Element\NamedFormElement
      */
     public function addValidationRule($rule, $message = null)
@@ -287,7 +307,7 @@ class Files extends Images
     }
 
     /**
-     * @param \Closure $callable
+     * @param  \Closure  $callable
      * @return $this
      */
     public function setSaveCallback(\Closure $callable)
@@ -299,6 +319,7 @@ class Files extends Images
 
     /**
      * Return save callback.
+     *
      * @return \Closure
      */
     public function getSaveCallback()
@@ -307,10 +328,10 @@ class Files extends Images
     }
 
     /**
-     * @param UploadedFile $file
-     * @param string $path
-     * @param string $filename
-     * @param array $settings
+     * @param  UploadedFile  $file
+     * @param  string  $path
+     * @param  string  $filename
+     * @param  array  $settings
      * @return \Closure|array
      */
     public function saveFile(UploadedFile $file, $path, $filename, array $settings)
@@ -324,19 +345,18 @@ class Files extends Images
         //S3 Implement
         $value = $path.'/'.$filename;
 
-        return ['path' => asset($value), 'value' => $value];
+        return ['path' => asset($value), 'value' => $value, 'original_name' => $file->getClientOriginalName()];
     }
 
     /**
-     * @param \Illuminate\Validation\Validator $validator
+     * @param  \Illuminate\Validation\Validator  $validator
      */
     public function customValidation(\Illuminate\Validation\Validator $validator)
     {
     }
 
     /**
-     * @param UploadedFile $file
-     *
+     * @param  UploadedFile  $file
      * @return string
      */
     public function defaultUploadFilename(UploadedFile $file)
@@ -345,8 +365,7 @@ class Files extends Images
     }
 
     /**
-     * @param UploadedFile $file
-     *
+     * @param  UploadedFile  $file
      * @return string
      */
     public function defaultUploadPath(UploadedFile $file)
@@ -376,8 +395,7 @@ class Files extends Images
     }
 
     /**
-     * @param string $mode
-     *
+     * @param  string  $mode
      * @return $this
      */
     public function setListMode($mode)
@@ -412,7 +430,7 @@ class Files extends Images
     }
 
     /**
-     * @param Request $request
+     * @param  Request  $request
      */
     public function save(Request $request)
     {
@@ -458,6 +476,20 @@ class Files extends Images
     }
 
     /**
+     * Some stupid, but work.
+     *
+     * @return $this
+     */
+    public function storeAsArray()
+    {
+        $this->mutateValue(function ($value) {
+            return json_decode($value, true);
+        });
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function toArray()
@@ -470,6 +502,7 @@ class Files extends Images
             'description_required' => $this->description_required,
             'text_fields' => $this->text_fields,
             'checkboxes' => $this->checkboxes,
+            'show_original_name' => $this->show_original_name,
         ]);
     }
 }

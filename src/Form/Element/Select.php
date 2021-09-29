@@ -53,9 +53,11 @@ class Select extends NamedFormElement
 
     /**
      * Select constructor.
+     *
      * @param $path
-     * @param null $label
-     * @param array $options
+     * @param  null  $label
+     * @param  array  $options
+     *
      * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormElementException
      */
@@ -105,7 +107,6 @@ class Select extends NamedFormElement
 
     /**
      * @param array
-     *
      * @return $this
      */
     public function setOptions(array $options)
@@ -116,8 +117,7 @@ class Select extends NamedFormElement
     }
 
     /**
-     * @param array $values
-     *
+     * @param  array  $values
      * @return $this
      */
     public function setEnum(array $values)
@@ -146,9 +146,8 @@ class Select extends NamedFormElement
     }
 
     /**
-     * @param bool $sortable
-     *
-     * @param null $sortable_flags
+     * @param  bool  $sortable
+     * @param  null  $sortable_flags
      * @return $this
      */
     public function setSortable($sortable, $sortable_flags = null)
@@ -203,11 +202,11 @@ class Select extends NamedFormElement
     }
 
     /**
-     * @param bool $mode
-     *
+     * @param  bool  $mode
+     * @param  array  $select2_options  See: https://select2.org/configuration/options-api
      * @return $this
      */
-    public function setSelect2($mode)
+    public function setSelect2($mode, array $select2_options = [])
     {
         $this->select2_mode = $mode;
 
@@ -217,6 +216,7 @@ class Select extends NamedFormElement
         if ($this->select2_mode) {
             $this->setView($this->view_select2);
             $this->setHtmlAttribute('class', $class);
+            $this->setSelect2Options($select2_options);
         } else {
             $attrs = $this->getHtmlAttribute('class');
             $pattern = "~(?:^{$class_escaped}$|^{$class_escaped}\s|s\{$class_escaped}$|\s{$class_escaped}\s)~s";
@@ -231,6 +231,42 @@ class Select extends NamedFormElement
     }
 
     /**
+     * @param  string|array  $key
+     * @param  string|bool|int|null  $value
+     * @return Select
+     */
+    public function setSelect2Options($key, $value = null)
+    {
+        if (is_array($key)) {
+            foreach ($key as $k => $v) {
+                $this->setSelect2Options($k, $v);
+            }
+        } else {
+            $key = 'data-'.preg_replace_callback('~[A-Z]~su', function ($matches) {
+                return '-'.mb_strtolower($matches[0]);
+            }, $key);
+            if (is_bool($value)) {
+                $value = $value ? 'true' : 'false';
+            } elseif ($value === null) {
+                $value = 'null';
+            }
+            $this->setHtmlAttribute($key, $value);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function disableSelect2EscapeMarkup()
+    {
+        $this->setHtmlAttribute('data-select2-allow-html', 'true');
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
     public function getExclude()
@@ -239,8 +275,7 @@ class Select extends NamedFormElement
     }
 
     /**
-     * @param array $keys
-     *
+     * @param  array  $keys
      * @return $this
      */
     public function setExclude($keys)
@@ -249,8 +284,7 @@ class Select extends NamedFormElement
     }
 
     /**
-     * @param array $keys
-     *
+     * @param  array  $keys
      * @return $this
      */
     public function exclude($keys)
@@ -311,8 +345,7 @@ class Select extends NamedFormElement
     }
 
     /**
-     * @param mixed $value
-     *
+     * @param  mixed  $value
      * @return mixed
      */
     public function prepareValue($value)

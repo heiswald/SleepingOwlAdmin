@@ -26,6 +26,9 @@ $(function () {
         var $innerGroup = $item.find('.files-group').not(".dissortable");
         var $input = $item.find('.fileValue');
 
+        var $fileBrowse = $item.find('.fileBrowse');
+        var $ajaxLoader = $fileBrowse.find('.fa-spin');
+
         var flow = new Flow({
             target: $item.data('target'),
             testChunks: false,
@@ -42,7 +45,9 @@ $(function () {
                 var res = {
                     url: $($thumb.find('[data-id=file]')[0]).data('src'),
                     title: $($thumb.find('[data-id=title]')[0]).val(),
-                    desc: $($thumb.find('[data-id=description]')[0]).val()
+
+                    desc: $($thumb.find('[data-id=description]')[0]).val(),
+                    orig: $($thumb.find('[data-id=original_name]')[0]).val()
                 };
 
                 $thumb.find('.text-field').each(function(ind, elem){
@@ -69,7 +74,10 @@ $(function () {
             return base;
         };
 
-        var urlItem = function (src, url) {
+        var urlItem = function (result) {
+            var src = result.value;
+            var url = result.path;
+            var orig = result.original_name;
             var images_extensions = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'tiff', 'webp'];
             var ext = src.split('.').pop();
             var img = null;
@@ -90,13 +98,17 @@ $(function () {
                 ext: ext,
                 mime: mime,
                 lightbox_style: lightbox_style,
-                num: (new Date).getTime()
+                num: (new Date).getTime(),
+                orig: orig
             });
         };
 
-        flow.assignBrowse($item.find('.fileBrowse'));
+        flow.assignBrowse($fileBrowse);
+        flow.assignDrop($fileBrowse);
 
         flow.on('filesSubmitted', function (file) {
+            // console.log('filesSubmitted');
+            $ajaxLoader.css('display', 'inline-block');
             flow.upload();
             updateValue();
         });
@@ -118,97 +130,133 @@ $(function () {
 
             var buttons = document.querySelectorAll('.tit');
             $(buttons[(buttons.length-1)]).val(result.title);
-            for (var i = 0; i < buttons.length; i++) {
-                var self = buttons[i];
-                self.addEventListener('change', function (event) {
-                    updateValue();
-                }, false);
-            }
 
-            buttons = document.querySelectorAll('.desc');
-            $(buttons[(buttons.length-1)]).val(result.desc);
-            for (i = 0; i < buttons.length; i++) {
-                self = buttons[i];
-                self.addEventListener('change', function (event) {
-                    updateValue();
-                }, false);
-            }
-        };
+            flow.on('fileSuccess', function (file, message) {
+                // console.log('fileSuccess');
+                flow.removeFile(file);
+                if (!flow.files.length) {
+                    $ajaxLoader.css('display', 'none');
+                }
 
-        flow.on('fileSuccess', function (file, message) {
-            flow.removeFile(file);
-            var result = $.parseJSON(message);
-            $innerGroup.append(urlItem(result.value, result.path));
-            updateValuesAndAddListener(result);
-            updateValue();
-        });
-
-        flow.on('fileError', function(file, message){
-            var response = $.parseJSON(message);
-            if (response.errors[0]) {
-                Admin.Messages.error(response.message, response.errors[0])
-            } else {
-                Admin.Messages.error(trans('lang.ckeditor.upload.error.common'))
-            }
-        });
-
-        $item.on('click', '.fileLink', function (e) {
-            e.preventDefault();
-            var url = $(this).attr('href');
-            Admin.Messages.prompt(trans('lang.file.insert_link'), null, null, url, url).then(result => {
-                if (result.value) {
-                    var $thumbReload = $(this).parents('.thumbnail');
-                    $($thumbReload.find('[data-id=file]')).data('src', result.value);
-                    $($thumbReload.find('.file-image')).attr('href', result.value);
-                    $($thumbReload.find('.fileicon-inner')).css('background-image', 'url("' + result.value + '")');
-                    updateValue();
-                } else {
+                try {
+                    var response = $.parseJSON(message);
+                } catch(e) {
+                    Admin.Messages.error(trans('lang.ckeditor.upload.error.common'))
                     return false;
                 }
+
+                $innerGroup.append(urlItem(response));
+
+                var buttons = document.querySelectorAll('.tit');
+
+                $(buttons[(buttons.length-1)]).val(response.title);
+
+                for (var i = 0; i < buttons.length; i++) {
+                    var self = buttons[i];
+                    self.addEventListener('change', function (event) {
+                        updateValue();
+                    }, false);
+                }
+
+                buttons = document.querySelectorAll('.desc');
+                $(buttons[(buttons.length-1)]).val(response.desc);
+                for (i = 0; i < buttons.length; i++) {
+                    self = buttons[i];
+                    self.addEventListener('change', function (event) {
+                        updateValue();
+                    }, false);
+                }
             });
-        });
 
-        $item.on('click', '.fileRemove', function (e) {
-            e.preventDefault();
-            $(this).closest('.fileThumbnail').remove();
-            updateValue();
-        });
+            flow.on('fileError', function(file, message, chunk){
+                // console.log('fileError');
+                flow.removeFile(file);
+                if (!flow.files.length) {
+                    $ajaxLoader.css('display', 'none');
+                }
+                /*
+				 * 200 - all is ok
+				 * 400 - as well as validation
+				 * 419 - bad csrf token
+				 * 500 - server side error
+				 */
+                let xhrStatus = chunk.xhr.status;
+                // console.log(file, message, chunk, xhrStatus, flow.files);
+                try {
+                    var response = $.parseJSON(message);
+                } catch(e) {
+                    Admin.Messages.error(trans('lang.ckeditor.upload.error.common'))
+                    return false;
+                }
+                if (response.errors[0]) {
+                    Admin.Messages.error(response.message, response.errors[0])
+                } else {
+                    Admin.Messages.error(trans('lang.ckeditor.upload.error.common'))
+                    return false;
+                }
 
-        $item.on('submit', '.fileRemove', function (e) {
-            e.preventDefault();
-        });
+                return true;
+            });
 
-        $item.on('click', '.checkbox-toggle', function(e) {
-            e.preventDefault();
-            $(this).find('.fas').toggleClass('hidden');
-            if (parseInt($(this).attr('data-value')) === 1) {
-                $(this).attr('data-value', 0);
-                $(this).removeClass('btn-primary').addClass('btn-danger');
-            } else {
-                $(this).attr('data-value', 1);
-                $(this).removeClass('btn-danger').addClass('btn-primary');
-            }
-            updateValue();
-        })
-
-        $item.on('change', '.text-field', function(e) {
-            updateValue();
-        });
-
-        $item.on('keypress', 'input[type="text"]', function(e) {
-            var code = (e.keyCode ? e.keyCode : e.which);
-            if (code === 13) {
+            $item.on('click', '.fileLink', function (e) {
                 e.preventDefault();
-            }
-        })
+                var url = $(this).attr('href');
+                Admin.Messages.prompt(trans('lang.file.insert_link'), null, null, url, url).then(result => {
+                    if (result.value) {
+                        var $thumbReload = $(this).parents('.thumbnail');
+                        $($thumbReload.find('[data-id=file]')).data('src', result.value);
+                        $($thumbReload.find('.file-image')).attr('href', result.value);
+                        $($thumbReload.find('.fileicon-inner')).css('background-image', 'url("' + result.value + '")');
+                        updateValue();
+                    } else {
+                        return false;
+                    }
+                });
+            });
 
-        // dragable
-        Sortable.create($innerGroup[0], {
-            sort: $($innerGroup[0]).data('draggable'),
-            onUpdate: function () {
+            $item.on('click', '.fileRemove', function (e) {
+                e.preventDefault();
+                $(this).closest('.fileThumbnail').remove();
                 updateValue();
-            }
-        });
-        updateValue();
+            });
+
+            $item.on('submit', '.fileRemove', function (e) {
+                e.preventDefault();
+            });
+
+            $item.on('click', '.checkbox-toggle', function(e) {
+                e.preventDefault();
+                $(this).find('.fas').toggleClass('hidden');
+                if (parseInt($(this).attr('data-value')) === 1) {
+                    $(this).attr('data-value', 0);
+                    $(this).removeClass('btn-primary').addClass('btn-danger');
+                } else {
+                    $(this).attr('data-value', 1);
+                    $(this).removeClass('btn-danger').addClass('btn-primary');
+                }
+                updateValue();
+            })
+
+            $item.on('change', '.text-field', function(e) {
+                updateValue();
+            });
+
+            $item.on('keypress', 'input[type="text"]', function(e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code === 13) {
+                    e.preventDefault();
+                }
+            })
+
+            // dragable
+            Sortable.create($innerGroup[0], {
+                sort: $($innerGroup[0]).data('draggable'),
+                handle: '.drag-handle',
+                onUpdate: function () {
+                    updateValue();
+                }
+            });
+            updateValue();
+        }
     });
 });

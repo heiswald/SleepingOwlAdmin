@@ -27,16 +27,12 @@ use SleepingOwl\Admin\Traits\Renderable;
  *
  * @method Actions getActions()
  * @method $this setActions(ActionInterface|array $action, ...$actions)
- *
  * @method ActionsForm getActionsForm()
  * @method $this setActionsForm(ActionInterface|array|FormElements $action, ...$actions)
- *
  * @method Filters getFilters()
  * @method $this setFilters(FilterInterface $filter, ...$filters)
- *
  * @method Apply getApply()
  * @method $this setApply(\Closure $apply, ...$applies)
- *
  * @method Scopes getScopes()
  * @method $this setScopes(array $scope, ...$scopes)
  */
@@ -105,9 +101,8 @@ abstract class Display implements DisplayInterface
     }
 
     /**
-     * @param string $name
-     * @param DisplayExtensionInterface $extension
-     *
+     * @param  string  $name
+     * @param  DisplayExtensionInterface  $extension
      * @return DisplayExtensionInterface
      */
     public function extend($name, DisplayExtensionInterface $extension)
@@ -128,6 +123,23 @@ abstract class Display implements DisplayInterface
     }
 
     /**
+     * @param $key
+     * @return DisplayExtensionInterface|null
+     */
+    public function getExtension($key)
+    {
+        return @$this->extensions[$key] ?: null;
+    }
+
+    /**
+     * @return DisplayExtensionInterface|Links|null
+     */
+    public function getLinks()
+    {
+        return $this->getExtension('links');
+    }
+
+    /**
      * @return RepositoryInterface
      */
     public function getRepository()
@@ -137,7 +149,6 @@ abstract class Display implements DisplayInterface
 
     /**
      * @param $repositoryClass
-     *
      * @return $this
      */
     public function setRepositoryClass($repositoryClass)
@@ -148,8 +159,7 @@ abstract class Display implements DisplayInterface
     }
 
     /**
-     * @param array|string|string[] ...$relations
-     *
+     * @param  array|string|string[]  ...$relations
      * @return $this
      */
     public function with($relations)
@@ -179,8 +189,7 @@ abstract class Display implements DisplayInterface
     }
 
     /**
-     * @param string $modelClass
-     *
+     * @param  string  $modelClass
      * @return $this
      */
     public function setModelClass($modelClass)
@@ -211,8 +220,7 @@ abstract class Display implements DisplayInterface
     }
 
     /**
-     * @param string $title
-     *
+     * @param  string  $title
      * @return $this
      */
     public function setTitle($title)
@@ -269,9 +277,8 @@ abstract class Display implements DisplayInterface
     }
 
     /**
-     * @param string $name
-     * @param array $arguments
-     *
+     * @param  string  $name
+     * @param  array  $arguments
      * @return DisplayExtensionInterface
      */
     public function __call($name, $arguments)
@@ -301,6 +308,7 @@ abstract class Display implements DisplayInterface
 
     /**
      * @return \Illuminate\Foundation\Application|mixed
+     *
      * @throws \Exception
      */
     protected function makeRepository()

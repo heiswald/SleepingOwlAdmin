@@ -35,8 +35,8 @@ class EditableColumn extends NamedColumn
     /**
      * Text constructor.
      *
-     * @param             $name
-     * @param             $label
+     * @param  $name
+     * @param  $label
      */
     public function __construct($name, $label = null, $small = null)
     {
@@ -70,7 +70,7 @@ class EditableColumn extends NamedColumn
     }
 
     /**
-     * @param mixed $text
+     * @param  mixed  $text
      * @return $this
      */
     public function setModifier($modifier)
@@ -93,8 +93,7 @@ class EditableColumn extends NamedColumn
     }
 
     /**
-     * @param bool $sortable
-     *
+     * @param  bool  $sortable
      * @return $this
      */
     public function setTitle($title)
@@ -110,7 +109,12 @@ class EditableColumn extends NamedColumn
     public function getUrl()
     {
         if (! $this->url) {
-            return request()->url();
+            $return = request()->url();
+            if (request()->getScheme() != rtrim(\URL::formatScheme(), ':/')) {
+                $return = preg_replace('~^[^:]+://~isu', \URL::formatScheme(), $return);
+            }
+
+            return $return;
         }
 
         return $this->url;
@@ -167,8 +171,7 @@ class EditableColumn extends NamedColumn
     }
 
     /**
-     * @param Closure|bool $readonlyEditable
-     *
+     * @param  Closure|bool  $readonlyEditable
      * @return $this
      */
     public function setReadonly($readonlyEditable)

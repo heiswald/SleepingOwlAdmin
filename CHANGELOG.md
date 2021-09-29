@@ -1,5 +1,20 @@
 <p align="center"><h2>[Unreleased] (Only in SleepingOwl <code class="language-php">8+</code> branch)</h2></p>
 
+## 2021-09-14
+* [Fix] Add `->setDeletable(bool||callable)` for `hasManyLocal`
+
+## 2021-08-25
+* [Add] Add pasting from buffer in `AdminFormElement::image` and `AdminFormElement::images` (use blob and autoupload)
+* [Add] Add `->setDeletable(bool||callable)` for `hasMany`, `belongsTo` and `manyToMany` (default `true`). PS: Callable only parent model
+
+## 2021-08-21
+* [Config] Add in config `useWysiwygCard` for default views (with card or without) wysiwyg columns
+* [Config] Add in config `useRelationCard` for default views (with card or without) `hasMany`, `belongsTo` and `manyToMany` columns
+* [Config] Add in config `useHasManyLocalCard` for default views (with card or without) `hasManyLocal` columns
+* [Add] Add `->setCard()` for `AdminFormElement::hasMany` (and other extendions)
+* [Add] Add `->setMaxHeight('20rem')` for `AdminFormElement::hasMany` (etc.)
+* [Add] Add `->setCollapsed(true)` for `AdminFormElement::hasMany` (etc.) if used `->setCard()`
+* [Fix] Fix and enable `->setReadonly(true)` for `AdminFormElement::hasMany` (etc.) (!!! only disabled button add and remove relation, NOT add readonly in children elements)
 
 ## 2021-05-30
 * [Fix] Fixed setReadonly callback in editable columns and add policy on editable columns

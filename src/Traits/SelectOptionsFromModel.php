@@ -3,6 +3,7 @@
 namespace SleepingOwl\Admin\Traits;
 
 use Closure;
+use Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Illuminate\Support\Arr;
@@ -48,6 +49,11 @@ trait SelectOptionsFromModel
     protected $isEmptyRelation = false;
 
     /**
+     * @var bool
+     */
+    protected $cacheOptions = false;
+
+    /**
      * @return Model
      */
     public function getModelForOptions()
@@ -56,15 +62,21 @@ trait SelectOptionsFromModel
     }
 
     /**
-     * @param @param string|Model $modelForOptions
-     *
+     * @param  string|Model  $modelForOptions
+     * @param  null  $display
+     * @param  null|bool  $cacheOptions
      * @return $this
+     *
      * @throws SelectException
      */
-    public function setModelForOptions($modelForOptions, $display = null)
+    public function setModelForOptions($modelForOptions, $display = null, $cacheOptions = null)
     {
         if ($display) {
             $this->display = $display;
+        }
+
+        if ($cacheOptions !== null) {
+            $this->cacheOptions = $cacheOptions;
         }
 
         if (is_string($modelForOptions)) {
@@ -81,8 +93,7 @@ trait SelectOptionsFromModel
     }
 
     /**
-     * @param string $key
-     *
+     * @param  string  $key
      * @return $this
      */
     public function setUsageKey($key)
@@ -101,8 +112,7 @@ trait SelectOptionsFromModel
     }
 
     /**
-     * @param string|Closure $display
-     *
+     * @param  string|Closure  $display
      * @return $this
      */
     public function setDisplay($display)
@@ -124,8 +134,7 @@ trait SelectOptionsFromModel
      * <code>setFetchColumns('title', 'position')</code> or
      * <code>setFetchColumns(['title', 'position'])</code>.
      *
-     * @param string|array $columns
-     *
+     * @param  string|array  $columns
      * @return $this
      */
     public function setFetchColumns($columns)
@@ -165,8 +174,7 @@ trait SelectOptionsFromModel
      * ?>
      * </code>
      *
-     * @param callable $callback The Callback with $item and $options args.
-     *
+     * @param  callable  $callback  The Callback with $item and $options args.
      * @return $this
      */
     public function setLoadOptionsQueryPreparer($callback)
@@ -187,8 +195,7 @@ trait SelectOptionsFromModel
     }
 
     /**
-     * @param null|string $foreignKey
-     *
+     * @param  null|string  $foreignKey
      * @return $this
      */
     public function setForeignKey($foreignKey)
@@ -244,7 +251,30 @@ trait SelectOptionsFromModel
         if (! is_null($preparer = $this->getLoadOptionsQueryPreparer())) {
             $options = $preparer($this, $options);
         }
-        $options = $options->get();
+
+        if (! $this->cacheOptions) {
+            // Do not use cache for current request
+            $options_list = $options->get();
+        } else {
+            // Use cache for current request
+            $sql_query = $options->toSql();
+            foreach ($options->getBindings() as $binding) {
+                $sql_query = preg_replace("#\?#", "'".$binding."'", $sql_query, 1);
+            }
+            $cache_key = '__temp.cacheOptions.'.md5($sql_query);
+            if (Config::has($cache_key)) {
+                // Get options from cache
+                $options_list = Config::get($cache_key);
+            } else {
+                // Get options from DB
+                $options_list = $options->get();
+
+                // Save to cache for current request
+                Config::set($cache_key, $options_list);
+            }
+        }
+
+        $options = $options_list;
 
         //some fix for setUsage
         $key = str_replace('->', '.', $key);
