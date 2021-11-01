@@ -13,7 +13,7 @@
           data-mode="{{ $mode }}"
           data-combodate="{{ $combodateValue  }}"
           data-pk="{{ $id }}"
-          data-emptytext="{{ trans('sleeping_owl::lang.select.empty') }}"
+          data-emptytext="{{ trans('sleeping_owl::lang.select.no_items') }}"
           {{ $isReadonly ? 'data-disabled' : '' }}
       >{{ $text }}</a>
     @else

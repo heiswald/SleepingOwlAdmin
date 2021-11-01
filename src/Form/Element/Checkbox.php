@@ -10,7 +10,8 @@ class Checkbox extends NamedFormElement
     protected $view = 'form.element.checkbox';
 
     /**
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return mixed
      */
     public function prepareValue($value)

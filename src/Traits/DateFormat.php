@@ -17,7 +17,8 @@ trait DateFormat
     }
 
     /**
-     * @param  string|null  $format
+     * @param string|null $format
+     *
      * @return $this
      */
     public function setFormat($format)
@@ -40,7 +41,8 @@ trait DateFormat
     }
 
     /**
-     * @param  string  $timezone
+     * @param string $timezone
+     *
      * @return $this
      */
     public function setTimezone($timezone)

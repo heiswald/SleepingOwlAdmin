@@ -18,12 +18,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class DisplayController extends Controller
 {
     /**
-     * @param  ModelConfigurationInterface  $model
-     * @param  Request  $request
-     * @param  Application  $application
-     * @param  null  $name
+     * @param ModelConfigurationInterface $model
+     * @param Request $request
+     * @param Application $application
+     * @param null $name
      * @return JsonResponse
-     *
      * @throws NotFoundHttpException
      */
     public function async(ModelConfigurationInterface $model, Request $request, Application $application, $name = null)
@@ -84,12 +83,12 @@ class DisplayController extends Controller
     }
 
     /**
-     * @param  ModelConfigurationInterface  $model
-     * @param  Request  $request
+     * @param ModelConfigurationInterface $model
+     * @param Request $request
      */
     public function treeReorder(ModelConfigurationInterface $model, Request $request)
     {
-        $display = $model->fireDisplay($request->input('parameters') ?: []);
+        $display = $model->fireDisplay();
 
         if ($display instanceof DisplayTabbed) {
             $display->getTabs()->each(function (DisplayTab $tab) use ($request) {
@@ -108,9 +107,9 @@ class DisplayController extends Controller
     }
 
     /**
-     * @param  DisplayDatatablesAsync  $datatable
-     * @param  Application  $application
-     * @param  Request  $request
+     * @param DisplayDatatablesAsync $datatable
+     * @param Application $application
+     * @param Request $request
      * @return array|JsonResponse
      */
     protected function renderFindedTable(DisplayDatatablesAsync $datatable, Application $application, Request $request)

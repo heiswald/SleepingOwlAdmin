@@ -41,7 +41,8 @@ class Gravatar extends NamedColumn
     }
 
     /**
-     * @param  string  $size
+     * @param string $size
+     *
      * @return $this
      */
     public function setSize($size)
@@ -60,7 +61,8 @@ class Gravatar extends NamedColumn
     }
 
     /**
-     * @param  string  $rating
+     * @param string $rating
+     *
      * @return $this
      */
     public function setRating($rating)

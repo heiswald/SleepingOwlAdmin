@@ -9,7 +9,8 @@ interface HasFakeModel
     /**
      * Sets fake model property.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return \Admin\Contracts\HasFakeModel
      */
     public function setFakeModel(Model $model);

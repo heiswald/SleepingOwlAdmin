@@ -19,10 +19,11 @@ class Assets extends BaseAssets implements AssetsContract
     /**
      * Gets or sets javascript assets.
      *
-     * @param  bool|string  $handle
-     * @param  string  $src  Asset source
-     * @param  array|string  $dependency  Dependencies
-     * @param  bool  $footer  Whether to show in header or footer
+     * @param bool|string $handle
+     * @param string $src Asset source
+     * @param array|string $dependency Dependencies
+     * @param bool $footer Whether to show in header or footer
+     *
      * @return AssetElementInterface Setting returns asset array, getting returns asset HTML
      */
     public function addJs($handle = false, $src = null, $dependency = null, $footer = true)
@@ -31,7 +32,7 @@ class Assets extends BaseAssets implements AssetsContract
     }
 
     /**
-     * @param  AssetElementInterface[]  $assets
+     * @param AssetElementInterface[] $assets
      * @return array|bool|static
      */
     protected function sort($assets)
@@ -56,9 +57,9 @@ class Assets extends BaseAssets implements AssetsContract
     }
 
     /**
-     * @param  AssetElement  $asset
-     * @param  Collection  $mainAssets
-     * @param  Collection  $assets
+     * @param AssetElement $asset
+     * @param Collection $mainAssets
+     * @param Collection $assets
      * @return Collection
      */
     protected function insertOn(AssetElement $asset, Collection &$mainAssets, Collection $assets)
@@ -99,7 +100,6 @@ class Assets extends BaseAssets implements AssetsContract
      * @param $new_value
      *   An value to insert.
      * @return array|bool The new array if the key exists, FALSE otherwise.
-     *
      * @see array_insert_after()
      */
     protected function insertBefore($key, &$array, $new_key, $new_value)
@@ -152,8 +152,9 @@ class Assets extends BaseAssets implements AssetsContract
     /**
      * Добавление глобальной переменной.
      *
-     * @param  string  $key
-     * @param  mixed  $value
+     * @param string $key
+     * @param mixed $value
+     *
      * @return self
      */
     public function putGlobalVar($key, $value)

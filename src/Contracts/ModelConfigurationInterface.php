@@ -51,7 +51,7 @@ interface ModelConfigurationInterface
     public function getCreateTitle();
 
     /**
-     * @param  Model  $model
+     * @param Model $model
      * @return \Illuminate\Contracts\Translation\Translator
      */
     public function getEditTitle();
@@ -67,25 +67,29 @@ interface ModelConfigurationInterface
     public function isCreatable();
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isEditable(Model $model);
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isDeletable(Model $model);
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isDestroyable(Model $model);
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isRestorable(Model $model);
@@ -96,8 +100,9 @@ interface ModelConfigurationInterface
     public function isRestorableModel();
 
     /**
-     * @param  string  $action
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param string $action
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function can($action, Model $model);
@@ -113,7 +118,7 @@ interface ModelConfigurationInterface
     public function fireCreate();
 
     /**
-     * @param  array  $redirect
+     * @param array $redirect
      * @return $this
      */
     public function setRedirect(array $redirect);
@@ -125,91 +130,104 @@ interface ModelConfigurationInterface
 
     /**
      * @param $id
+     *
      * @return mixed|void
      */
     public function fireEdit($id);
 
     /**
-     * @param  int  $id
-     * @return $this
+     * @param int $id
      *
+     * @return $this
      * @deprecated
      */
     public function fireFullEdit($id);
 
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function fireDelete($id);
 
     /**
      * @param $id
+     *
      * @return mixed
      */
     public function fireDestroy($id);
 
     /**
      * @param $id
+     *
      * @return bool|mixed
      */
     public function fireRestore($id);
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getDisplayUrl(array $parameters = []);
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getCreateUrl(array $parameters = []);
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getCancelUrl(array $parameters = []);
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getStoreUrl(array $parameters = []);
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getEditUrl($id, array $parameters = []);
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getUpdateUrl($id, array $parameters = []);
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getDeleteUrl($id, array $parameters = []);
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getDestroyUrl($id, array $parameters = []);
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getRestoreUrl($id, array $parameters = []);

@@ -11,21 +11,18 @@ class UserManagerCommand extends Command
 {
     /**
      * The console command name.
-     *
      * @var string
      */
     protected $name = 'sleepingowl:user';
 
     /**
      * The console command description.
-     *
      * @var string
      */
     protected $description = 'Manage your users.';
 
     /**
      * @return null|void
-     *
      * @throws \Exception
      */
     public function fire()
@@ -49,7 +46,6 @@ class UserManagerCommand extends Command
 
     /**
      * @return null|void
-     *
      * @throws \Exception
      */
     public function handle()
@@ -71,7 +67,6 @@ class UserManagerCommand extends Command
 
     /**
      * @return string
-     *
      * @throws \Exception
      */
     public function getUserClass()
@@ -218,7 +213,6 @@ class UserManagerCommand extends Command
 
     /**
      * Get the console command options.
-     *
      * @return array
      */
     protected function getOptions()

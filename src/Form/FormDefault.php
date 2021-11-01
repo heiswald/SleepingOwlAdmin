@@ -21,14 +21,12 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
 
     /**
      * View to render.
-     *
      * @var string|\Illuminate\View\View
      */
     protected $view = 'form.default';
 
     /**
      * Form related class.
-     *
      * @var string
      */
     protected $class;
@@ -40,35 +38,30 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
 
     /**
      * Form related repository.
-     *
      * @var RepositoryInterface
      */
     protected $repository;
 
     /**
      * Form action url.
-     *
      * @var string
      */
     protected $action;
 
     /**
      * Form related model instance.
-     *
      * @var Model
      */
     protected $model;
 
     /**
      * Currently loaded model id.
-     *
      * @var int
      */
     protected $id;
 
     /**
      * Is form already initialized?
-     *
      * @var bool
      */
     protected $initialized = false;
@@ -76,7 +69,7 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     /**
      * FormDefault constructor.
      *
-     * @param  array  $elements
+     * @param array $elements
      */
     public function __construct(array $elements = [])
     {
@@ -89,7 +82,6 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
 
     /**
      * Initialize form.
-     *
      * @throws \SleepingOwl\Admin\Exceptions\RepositoryException
      */
     public function initialize()
@@ -147,7 +139,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  FormButtonsInterface  $buttons
+     * @param FormButtonsInterface $buttons
+     *
      * @return $this
      */
     public function setButtons(FormButtonsInterface $buttons)
@@ -174,7 +167,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  string  $action
+     * @param string $action
+     *
      * @return $this
      */
     public function setAction($action)
@@ -195,9 +189,9 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  string  $class
-     * @return $this
+     * @param string $class
      *
+     * @return $this
      * @throws FormException
      */
     public function setModelClass($class)
@@ -211,8 +205,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
 
     /**
      * @return \SleepingOwl\Admin\Form\FormElementsCollection
-     *
      * @see getElements()
+     *
      * @deprecated 4.5.0
      */
     public function getItems()
@@ -221,9 +215,9 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  array|\SleepingOwl\Admin\Contracts\Form\FormElementInterface  $items
-     * @return $this
+     * @param array|\SleepingOwl\Admin\Contracts\Form\FormElementInterface $items
      *
+     * @return $this
      * @deprecated 4.5.0
      * @see setElements()
      */
@@ -237,9 +231,9 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  \SleepingOwl\Admin\Contracts\Form\FormElementInterface  $item
-     * @return $this
+     * @param \SleepingOwl\Admin\Contracts\Form\FormElementInterface $item
      *
+     * @return $this
      * @deprecated 4.5.0
      * @see addElement()
      */
@@ -251,8 +245,7 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     /**
      * Set currently loaded model id.
      *
-     * @param  int  $id
-     *
+     * @param int $id
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormException
      */
     public function setId($id)
@@ -287,7 +280,6 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
 
     /**
      * Get related form model configuration.
-     *
      * @return ModelConfigurationInterface
      */
     public function getModelConfiguration()
@@ -310,7 +302,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return $this
      */
     public function setModel(Model $model)
@@ -321,7 +314,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  ModelConfigurationInterface  $modelConfiguration
+     * @param ModelConfigurationInterface $modelConfiguration
+     *
      * @return bool
      */
     public function validModelConfiguration(ModelConfigurationInterface $modelConfiguration = null)
@@ -332,8 +326,9 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     /**
      * Save instance.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  ModelConfigurationInterface  $modelConfiguration
+     * @param \Illuminate\Http\Request $request
+     * @param ModelConfigurationInterface $modelConfiguration
+     *
      * @return bool
      */
     public function saveForm(\Illuminate\Http\Request $request, ModelConfigurationInterface $modelConfiguration = null)
@@ -369,7 +364,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return void
      */
     protected function saveBelongsToRelations(Model $model)
@@ -383,7 +379,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return void
      */
     protected function saveHasOneRelations(Model $model)
@@ -400,8 +397,8 @@ class FormDefault extends FormElements implements DisplayInterface, FormInterfac
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
-     * @param  ModelConfigurationInterface  $modelConfiguration
+     * @param \Illuminate\Http\Request $request
+     * @param ModelConfigurationInterface $modelConfiguration
      *
      * @throws ValidationException
      */

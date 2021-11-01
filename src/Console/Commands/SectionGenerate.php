@@ -24,7 +24,8 @@ class SectionGenerate extends Command
     /**
      * Execute the console command.
      *
-     * @param  AdminInterface  $admin
+     * @param AdminInterface $admin
+     *
      * @return void
      */
     public function fire(AdminInterface $admin)
@@ -39,7 +40,8 @@ class SectionGenerate extends Command
     /**
      * Execute the console command.
      *
-     * @param  AdminInterface  $admin
+     * @param AdminInterface $admin
+     *
      * @return void
      */
     public function handle(AdminInterface $admin)

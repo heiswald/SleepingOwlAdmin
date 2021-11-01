@@ -29,7 +29,7 @@ class OrderByClause implements OrderByClauseInterface
     /**
      * OrderByClause constructor.
      *
-     * @param  string|Closure  $name
+     * @param string|Closure $name
      */
     public function __construct($name)
     {
@@ -37,8 +37,8 @@ class OrderByClause implements OrderByClauseInterface
     }
 
     /**
-     * @param  Builder  $query
-     * @param  string  $direction
+     * @param Builder $query
+     * @param string $direction
      */
     public function modifyQuery(Builder $query, $direction = 'asc')
     {
@@ -48,7 +48,8 @@ class OrderByClause implements OrderByClauseInterface
     }
 
     /**
-     * @param  string|\Closure  $name
+     * @param string|\Closure $name
+     *
      * @return \SleepingOwl\Admin\Display\Column\OrderByClause
      */
     public function setName($name)
@@ -59,8 +60,8 @@ class OrderByClause implements OrderByClauseInterface
     }
 
     /**
-     * @param  Builder  $query
-     * @param  string  $direction
+     * @param Builder $query
+     * @param string $direction
      */
     protected function callCallable(Builder $query, $direction)
     {
@@ -68,8 +69,8 @@ class OrderByClause implements OrderByClauseInterface
     }
 
     /**
-     * @param  Builder  $query
-     * @param  string  $direction
+     * @param Builder $query
+     * @param string $direction
      */
     protected function callDefaultClause(Builder $query, $direction)
     {
@@ -98,8 +99,7 @@ class OrderByClause implements OrderByClauseInterface
 
     /**
      * Load Relations by this->name.
-     *
-     * @param  Builder  $query
+     * @param Builder $query
      * @param $direction
      */
     protected function loadRelationOrder(Builder $query, $direction)
@@ -140,12 +140,11 @@ class OrderByClause implements OrderByClauseInterface
 
     /**
      * Load HasOneOrMany keys.
-     *
-     * @param  Collection  $relations
-     * @param  HasOneOrMany  $relationClass
-     * @param  Model  $relationModel
-     * @param  Model  $model
-     * @param  Builder  $query
+     * @param Collection $relations
+     * @param HasOneOrMany $relationClass
+     * @param Model $relationModel
+     * @param Model $model
+     * @param Builder $query
      * @param $direction
      */
     protected function loadHasOne(
@@ -161,12 +160,11 @@ class OrderByClause implements OrderByClauseInterface
 
     /**
      * Load HasMany keys.
-     *
-     * @param  Collection  $relations
-     * @param  HasOneOrMany  $relationClass
-     * @param  Model  $relationModel
-     * @param  Model  $model
-     * @param  Builder  $query
+     * @param Collection $relations
+     * @param HasOneOrMany $relationClass
+     * @param Model $relationModel
+     * @param Model $model
+     * @param Builder $query
      * @param $direction
      */
     protected function loadHasMany(
@@ -182,12 +180,11 @@ class OrderByClause implements OrderByClauseInterface
 
     /**
      * Load HasOneOrMany keys.
-     *
-     * @param  Collection  $relations
-     * @param  HasOneOrMany  $relationClass
-     * @param  Model  $relationModel
-     * @param  Model  $model
-     * @param  Builder  $query
+     * @param Collection $relations
+     * @param HasOneOrMany $relationClass
+     * @param Model $relationModel
+     * @param Model $model
+     * @param Builder $query
      * @param $direction
      */
     protected function loadHasOneOrMany(
@@ -216,12 +213,11 @@ class OrderByClause implements OrderByClauseInterface
 
     /**
      * Load keys for BelongsTo.
-     *
-     * @param  Collection  $relations
-     * @param  BelongsTo  $relationClass
-     * @param  Model  $relationModel
-     * @param  Model  $model
-     * @param  Builder  $query
+     * @param Collection $relations
+     * @param BelongsTo $relationClass
+     * @param Model $relationModel
+     * @param Model $model
+     * @param Builder $query
      */
     protected function loadBelongsTo(
         Collection $relations,
@@ -256,12 +252,11 @@ class OrderByClause implements OrderByClauseInterface
 
     /**
      * Load keys for MorphTo.
-     *
-     * @param  Collection  $relations
-     * @param  MorphTo  $relationClass
-     * @param  null  $relationModel
-     * @param  Model  $model
-     * @param  Builder  $query
+     * @param Collection $relations
+     * @param MorphTo $relationClass
+     * @param null $relationModel
+     * @param Model $model
+     * @param Builder $query
      */
     protected function loadMorphTo(
         Collection $relations,

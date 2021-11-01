@@ -12,9 +12,10 @@ trait Assets
     protected $package;
 
     /**
-     * @param  string  $handle
-     * @param  string  $script
-     * @param  array  $dependency
+     * @param string $handle
+     * @param string $script
+     * @param array $dependency
+     *
      * @return $this
      */
     public function addScript($handle, $script, array $dependency = [])
@@ -29,9 +30,10 @@ trait Assets
     }
 
     /**
-     * @param  string  $handle
-     * @param  string  $style
-     * @param  array  $attributes
+     * @param string $handle
+     * @param string $style
+     * @param array $attributes
+     *
      * @return $this
      */
     public function addStyle($handle, $style, array $attributes = [])
@@ -47,6 +49,7 @@ trait Assets
 
     /**
      * @param string ... $package
+     *
      * @return $this
      */
     public function withPackage($packages)

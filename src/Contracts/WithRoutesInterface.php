@@ -7,7 +7,8 @@ use Illuminate\Routing\Router;
 interface WithRoutesInterface
 {
     /**
-     * @param  Router  $router
+     * @param Router $router
+     *
      * @return void
      */
     public static function registerRoutes(Router $router);

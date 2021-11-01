@@ -13,7 +13,8 @@ interface DisplayExtensionInterface extends Arrayable
     public function getOrder();
 
     /**
-     * @param  int  $order
+     * @param int $order
+     *
      * @return $this
      */
     public function setOrder($order);
@@ -24,13 +25,14 @@ interface DisplayExtensionInterface extends Arrayable
     public function getDisplay();
 
     /**
-     * @param  DisplayInterface  $display
+     * @param DisplayInterface $display
+     *
      * @return $this
      */
     public function setDisplay(DisplayInterface $display);
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      */
     public function modifyQuery(Builder $query);
 }

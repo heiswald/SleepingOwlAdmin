@@ -27,7 +27,8 @@ abstract class Extension implements DisplayExtensionInterface
     }
 
     /**
-     * @param  DisplayInterface  $display
+     * @param DisplayInterface $display
+     *
      * @return $this
      */
     public function setDisplay(DisplayInterface $display)
@@ -38,7 +39,7 @@ abstract class Extension implements DisplayExtensionInterface
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      */
     public function modifyQuery(Builder $query)
     {
@@ -54,7 +55,8 @@ abstract class Extension implements DisplayExtensionInterface
     }
 
     /**
-     * @param  int  $order
+     * @param int $order
+     *
      * @return $this
      */
     public function setOrder($order)

@@ -23,7 +23,8 @@ class Textarea extends NamedFormElement
     }
 
     /**
-     * @param  int  $rows
+     * @param int $rows
+     *
      * @return $this
      */
     public function setRows($rows)

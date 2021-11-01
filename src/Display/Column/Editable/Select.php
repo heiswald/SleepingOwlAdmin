@@ -60,11 +60,9 @@ class Select extends EditableColumn implements ColumnEditableInterface
 
     /**
      * Select constructor.
-     *
      * @param $name
-     * @param  null  $label
-     * @param  array  $options
-     *
+     * @param null $label
+     * @param array $options
      * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      */
     public function __construct($name, $label = null, $options = [], $small = null)
@@ -130,7 +128,8 @@ class Select extends EditableColumn implements ColumnEditableInterface
     }
 
     /**
-     * @param  bool  $sortable
+     * @param bool $sortable
+     *
      * @return $this
      */
     public function setSortable($sortable)
@@ -200,6 +199,7 @@ class Select extends EditableColumn implements ColumnEditableInterface
 
     /**
      * @param array
+     *
      * @return $this
      */
     public function setOptions(array $options)
@@ -210,7 +210,8 @@ class Select extends EditableColumn implements ColumnEditableInterface
     }
 
     /**
-     * @param  array  $values
+     * @param array $values
+     *
      * @return $this
      */
     public function setEnum(array $values)
@@ -225,17 +226,13 @@ class Select extends EditableColumn implements ColumnEditableInterface
     {
         return array_merge(parent::toArray(), [
             'options' => $this->mutateOptions(),
-            /*
-             * Param "optionName" do not used anywhere
-             */
-            //'optionName' => $this->getOptionName($this->getModelValue()),
+            'optionName' => $this->getOptionName($this->getModelValue()),
             'text' => $this->getModifierValue(),
         ]);
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
-     *
+     * @param \Illuminate\Http\Request $request
      * @throws \SleepingOwl\Admin\Exceptions\Form\Element\SelectException
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormElementException
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormException

@@ -26,73 +26,16 @@ use SleepingOwl\Admin\Form\FormElements;
 use SleepingOwl\Admin\Form\Related\Group;
 use SleepingOwl\Admin\Form\Related\HasUniqueValidation;
 use SleepingOwl\Admin\Form\Related\ManipulatesRequestRelations;
-use SleepingOwl\Admin\Traits\Collapsed;
 
 class HasManyLocal extends FormElements
 {
     use HtmlAttributes, HasUniqueValidation, ManipulatesRequestRelations;
-    use Collapsed;
 
-    protected $view = 'form.element.related.elements_without_card';
+    protected $view = 'form.element.related.elements';
 
     const NEW_ITEM = 'new';
 
     const REMOVE = 'remove';
-
-    /**
-     * @var bool|callable
-     */
-    protected $deletable = true;
-
-    /**
-     * @return bool|callable
-     */
-    public function isDeletable()
-    {
-        if (is_callable($this->deletable)) {
-            return (bool) call_user_func($this->deletable, $this->getModel());
-        }
-
-        return (bool) $this->deletable;
-    }
-
-    /**
-     * @param  Closure|bool  $readonly
-     * @return $this
-     */
-    public function setDeletable($deletable)
-    {
-        $this->deletable = $deletable;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setCard(): self
-    {
-        $this->view = 'form.element.related.elements';
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setMaxHeight($maxHeight): self
-    {
-        $this->setHtmlAttributes([
-            'style' => 'overflow-y:auto;max-height:'.$maxHeight,
-        ]);
-
-        return $this;
-    }
-
-    /**
-     * @var bool|null
-     */
-    protected $collapsed;
 
     /**
      * How many items can be created.
@@ -191,16 +134,11 @@ class HasManyLocal extends FormElements
     // protected $emptyElementCallback;
 
     /**
-     * @var bool
-     */
-    protected $draggable = true;
-
-    /**
      * HasManyLocal constructor.
      *
-     * @param  string  $fieldName
-     * @param  array  $elements
-     * @param  string  $label
+     * @param string $fieldName
+     * @param array  $elements
+     * @param string $label
      */
     public function __construct(string $fieldName, array $elements = [], $label = '')
     {
@@ -209,17 +147,14 @@ class HasManyLocal extends FormElements
         $this->fieldValues = collect();
         $this->setLabel($label);
 
-        if (config('sleeping_owl.useHasManyLocalCard')) {
-            $this->setCard();
-        }
-
         parent::__construct($elements);
 
         $this->setFieldName($fieldName);
     }
 
     /**
-     * @param  int  $limit
+     * @param int $limit
+     *
      * @return $this
      */
     public function setLimit(int $limit): self
@@ -230,7 +165,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  string  $label
+     * @param string $label
+     *
      * @return $this
      */
     public function setLabel(string $label): self
@@ -311,8 +247,8 @@ class HasManyLocal extends FormElements
 
     /**
      * @param $element
-     * @return Columns|Custom|FormElements
      *
+     * @return Columns|Custom|FormElements
      * @throws Exception
      */
     protected function emptyElement($element)
@@ -368,9 +304,9 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  Model  $model
-     * @return FormElements|void
+     * @param Model $model
      *
+     * @return FormElements|void
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function setModel(Model $model)
@@ -393,6 +329,7 @@ class HasManyLocal extends FormElements
 
     /**
      * @param $instance
+     *
      * @return $this
      */
     public function setInstance($instance)
@@ -406,6 +343,7 @@ class HasManyLocal extends FormElements
      * Sets field name property.
      *
      * @param string
+     *
      * @return HasManyLocal
      */
     public function setFieldName(string $name): self
@@ -553,8 +491,9 @@ class HasManyLocal extends FormElements
     /**
      * Returns value from model for given element.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  NamedFormElement  $el
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param NamedFormElement $el
+     *
      * @return mixed|null
      */
     protected function getElementValue(Model $model, NamedFormElement $el)
@@ -579,7 +518,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string|string[]|null
      */
     protected function formatElementName(string $name)
@@ -594,7 +534,7 @@ class HasManyLocal extends FormElements
     /**
      * Applies given callback to every element of form.
      *
-     * @param  \Illuminate\Support\Collection  $elements
+     * @param \Illuminate\Support\Collection $elements
      * @param $callback
      */
     protected function forEachElement(Collection $elements, $callback)
@@ -607,7 +547,8 @@ class HasManyLocal extends FormElements
     /**
      * Returns flat collection of elements in form ignoring everything but NamedFormElement. Works recursive.
      *
-     * @param  \Illuminate\Support\Collection  $elements
+     * @param \Illuminate\Support\Collection $elements
+     *
      * @return mixed
      */
     protected function flatNamedElements(Collection $elements)
@@ -626,8 +567,9 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  string  $modelClass
-     * @param  array  $attributes
+     * @param string $modelClass
+     * @param array  $attributes
+     *
      * @return Model
      */
     protected function safeCreateModel(string $modelClass, array $attributes = []): Model
@@ -636,8 +578,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  array  $attributes
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param array $attributes
      * @return \Illuminate\Database\Eloquent\Model
      */
     protected function safeFillModel(Model $model, array $attributes = []): Model
@@ -661,9 +603,7 @@ class HasManyLocal extends FormElements
     /**
      * Saves request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @throws Exception
+     * @param \Illuminate\Http\Request $request
      */
     public function save(Request $request)
     {
@@ -671,7 +611,7 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      */
     public function afterSave(Request $request)
     {
@@ -679,9 +619,9 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  Request  $request
-     * @return void
+     * @param Request $request
      *
+     * @return void
      * @throws Exception
      */
     protected function setFieldValues(Request $request)
@@ -757,7 +697,6 @@ class HasManyLocal extends FormElements
 
     /**
      * @return array
-     *
      * @throws Exception
      */
     protected function getFieldValues(): array
@@ -777,7 +716,7 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  array  $rules
+     * @param array $rules
      * @return array
      */
     public function getValidationRulesFromElements(array $rules = []): array
@@ -790,7 +729,7 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  array  $messages
+     * @param array $messages
      * @return array
      */
     public function getValidationMessagesForElements(array $messages = []): array
@@ -821,7 +760,7 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
      * @return array
      */
     protected function modifyValidationParameters(array $parameters): array
@@ -853,14 +792,12 @@ class HasManyLocal extends FormElements
             'limit' => $this->limit,
             'attributes' => $this->htmlAttributesToString(),
             'helpText' => $this->getHelpText(),
-            'draggable' => $this->getDraggable(),
-            'collapsed' => $this->getCollapsed(),
-            'deletable' => $this->isDeletable(),
         ];
     }
 
     /**
-     * @param  string  $groupLabel
+     * @param string $groupLabel
+     *
      * @return HasManyLocal
      */
     public function setGroupLabel(string $groupLabel): self
@@ -893,7 +830,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  string|Htmlable  $helpText
+     * @param string|Htmlable $helpText
+     *
      * @return $this
      */
     public function setHelpText($helpText)
@@ -912,7 +850,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  callable|null  $saveCallback
+     * @param callable|null $saveCallback
+     *
      * @return HasManyLocal
      */
     public function setSaveCallback(?callable $saveCallback): self
@@ -931,7 +870,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  int  $jsonOptions
+     * @param int $jsonOptions
+     *
      * @return HasManyLocal
      */
     public function setJsonOptions(int $jsonOptions): self
@@ -950,7 +890,7 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  callable|null  $loadCallback
+     * @param callable|null $loadCallback
      */
     public function setLoadCallback(?callable $loadCallback): void
     {
@@ -966,7 +906,8 @@ class HasManyLocal extends FormElements
     }
 
     /**
-     * @param  string  $saveMode
+     * @param string $saveMode
+     *
      * @return HasManyLocal
      */
     public function setSaveMode(string $saveMode): self
@@ -979,62 +920,19 @@ class HasManyLocal extends FormElements
     /**
      * @return HasManyLocal
      */
-    public function storeAsArray(): self
-    {
-        $this->setSaveMode('array');
-
-        return $this;
-    }
-
-    /**
-     * Use storeAsArray() method.
-     *
-     * @return HasManyLocal
-     *
-     * @deprecated
-     */
     public function saveAsArray(): self
     {
-        return $this->storeAsArray();
-    }
-
-    /**
-     * @return HasManyLocal
-     */
-    public function storeAsJson(): self
-    {
-        $this->setSaveMode('json');
+        $this->saveMode = 'array';
 
         return $this;
     }
 
     /**
-     * Use storeAsJson() method.
-     *
      * @return HasManyLocal
-     *
-     * @deprecated
      */
     public function saveAsJson(): self
     {
-        return $this->storeAsJson();
-    }
-
-    /**
-     * @return bool
-     */
-    public function getDraggable()
-    {
-        return (bool) $this->draggable;
-    }
-
-    /**
-     * @param  bool  $draggable
-     * @return $this
-     */
-    public function setDraggable($draggable)
-    {
-        $this->draggable = $draggable;
+        $this->saveMode = 'json';
 
         return $this;
     }
@@ -1048,7 +946,7 @@ class HasManyLocal extends FormElements
     // }
 
     /**
-     * @param  bool  $needToSetValueSkipped
+     * @param bool $needToSetValueSkipped
      */
     // public function setNeedToSetValueSkipped(bool $needToSetValueSkipped): void
     // {
@@ -1064,7 +962,7 @@ class HasManyLocal extends FormElements
     // }
 
     /**
-     * @param  callable|false|null  $emptyElementCallback
+     * @param callable|false|null $emptyElementCallback
      */
     // public function setEmptyElementCallback($emptyElementCallback): void
     // {

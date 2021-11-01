@@ -106,7 +106,6 @@ return [
         'placeholder' => 'Select from the list',
         'no_items'    => 'No items',
         'init'        => 'Select',
-        'empty'       => 'empty',
         'limit'       => 'and ${count} more',
         'deselect'    => 'Deselect',
         'short'       => 'Enter min :min characters',

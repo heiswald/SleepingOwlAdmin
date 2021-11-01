@@ -13,7 +13,8 @@ class KalnoyNestedsetType extends NestedsetType
     /**
      * Get tree structure.
      *
-     * @param  \Illuminate\Database\Eloquent\Collection  $collection
+     * @param \Illuminate\Database\Eloquent\Collection $collection
+     *
      * @return mixed
      */
     public function getTree(Collection $collection)
@@ -22,7 +23,8 @@ class KalnoyNestedsetType extends NestedsetType
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return mixed
      */
     public function getLeftColumn(Model $model)
@@ -31,7 +33,8 @@ class KalnoyNestedsetType extends NestedsetType
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return mixed
      */
     public function getRightColumn(Model $model)
@@ -40,7 +43,8 @@ class KalnoyNestedsetType extends NestedsetType
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return mixed
      */
     public function getParentColumn(Model $model)

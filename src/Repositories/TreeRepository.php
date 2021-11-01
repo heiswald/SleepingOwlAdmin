@@ -14,21 +14,18 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
 {
     /**
      * Parent field name.
-     *
      * @var string
      */
     protected $parentField = 'parent_id';
 
     /**
      * Order field name.
-     *
      * @var string
      */
     protected $orderField = 'order';
 
     /**
      * Root parent id value.
-     *
      * @var null
      */
     protected $rootParentId = null;
@@ -39,7 +36,7 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     protected $treeType;
 
     /**
-     * @param  string  $treeType
+     * @param string $treeType
      */
     public function __construct($treeType = null)
     {
@@ -49,7 +46,7 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     }
 
     /**
-     * @param  string  $treeType
+     * @param string $treeType
      *
      * @throws DisplayTreeException
      */
@@ -63,7 +60,8 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     }
 
     /**
-     * @param  string  $class
+     * @param string $class
+     *
      * @return $this
      */
     public function setClass($class)
@@ -80,7 +78,8 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     /**
      * Get tree structure.
      *
-     * @param  Collection  $collection
+     * @param Collection $collection
+     *
      * @return mixed
      */
     public function getTree(Collection $collection)
@@ -99,7 +98,8 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     }
 
     /**
-     * @param  string  $parentField
+     * @param string $parentField
+     *
      * @return $this
      */
     public function setParentField($parentField)
@@ -120,7 +120,8 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     }
 
     /**
-     * @param  string  $orderField
+     * @param string $orderField
+     *
      * @return $this
      */
     public function setOrderField($orderField)
@@ -141,7 +142,8 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
     }
 
     /**
-     * @param  string  $rootParentId
+     * @param string $rootParentId
+     *
      * @return $this
      */
     public function setRootParentId($rootParentId)
@@ -163,7 +165,6 @@ class TreeRepository extends BaseRepository implements TreeRepositoryInterface
 
     /**
      * Detect tree type.
-     *
      * @return $this
      */
     protected function detectType()

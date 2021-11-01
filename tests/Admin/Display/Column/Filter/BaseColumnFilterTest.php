@@ -12,9 +12,8 @@ class BaseColumnFilterTest extends TestCase
     }
 
     /**
-     * @param  string  $operator
+     * @param string $operator
      * @return \PHPUnit\Framework\MockObject\MockObject
-     *
      * @throws ReflectionException
      */
     public function getFilter($operator = 'equal')
@@ -30,7 +29,6 @@ class BaseColumnFilterTest extends TestCase
      * @param $operator
      * @param $condition
      * @param $args
-     *
      * @throws ReflectionException
      *
      * @dataProvider sqlOperatorsProvider

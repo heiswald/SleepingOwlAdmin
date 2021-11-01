@@ -29,8 +29,8 @@ class Index extends NamedColumn
     /**
      * Custom constructor.
      *
-     * @param  null|string  $label
-     * @param  Closure  $callback
+     * @param null|string $label
+     * @param Closure $callback
      */
     public function __construct($label = null)
     {
@@ -42,7 +42,6 @@ class Index extends NamedColumn
 
     /**
      * @return array
-     *
      * @throws \Exception
      */
     public function toArray()

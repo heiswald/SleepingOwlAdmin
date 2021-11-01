@@ -14,7 +14,7 @@ class MessageStack
     protected $types;
 
     /**
-     * @param  null|array  $types
+     * @param null|array $types
      */
     public function __construct(array $types = null)
     {
@@ -22,8 +22,9 @@ class MessageStack
     }
 
     /**
-     * @param  string  $name
-     * @param  array  $arguments
+     * @param string $name
+     * @param array $arguments
+     *
      * @return mixed
      */
     public function __call($name, $arguments)

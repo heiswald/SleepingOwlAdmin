@@ -84,7 +84,7 @@ abstract class TableColumn implements ColumnInterface
     /**
      * TableColumn constructor.
      *
-     * @param  string|null  $label
+     * @param string|null $label
      */
     public function __construct($label = null)
     {
@@ -127,7 +127,7 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  \Closure  $callable
+     * @param \Closure $callable
      * @return $this
      */
     public function setOrderCallback(Closure $callable)
@@ -138,7 +138,7 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  \Closure  $callable
+     * @param \Closure $callable
      * @return $this
      */
     public function setSearchCallback(Closure $callable)
@@ -149,7 +149,7 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  \Closure  $callable
+     * @param \Closure $callable
      * @return $this
      */
     public function setFilterCallback(Closure $callable)
@@ -200,7 +200,8 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  int|string  $width
+     * @param int|string $width
+     *
      * @return $this
      */
     public function setWidth($width)
@@ -216,6 +217,7 @@ abstract class TableColumn implements ColumnInterface
 
     /**
      * @param $isSearchable
+     *
      * @return TableColumn
      */
     public function setSearchable($isSearchable)
@@ -234,7 +236,8 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  ColumnInterface  $append
+     * @param ColumnInterface $append
+     *
      * @return $this
      */
     public function append(ColumnInterface $append)
@@ -253,7 +256,8 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return $this
      */
     public function setModel(Model $model)
@@ -271,7 +275,8 @@ abstract class TableColumn implements ColumnInterface
     /**
      * Set column header label.
      *
-     * @param  string  $title
+     * @param string $title
+     *
      * @return $this
      */
     public function setLabel($title)
@@ -282,7 +287,7 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  OrderByClauseInterface|bool|string|\Closure  $orderable
+     * @param OrderByClauseInterface|bool|string|\Closure $orderable
      * @return $this
      */
     public function setOrderable($orderable)
@@ -311,7 +316,6 @@ abstract class TableColumn implements ColumnInterface
 
     /**
      * Check if column is orderable.
-     *
      * @return bool
      */
     public function isOrderable()
@@ -321,7 +325,6 @@ abstract class TableColumn implements ColumnInterface
 
     /**
      * Check if column is Searchable.
-     *
      * @return bool
      */
     public function isSearchable()
@@ -330,10 +333,9 @@ abstract class TableColumn implements ColumnInterface
     }
 
     /**
-     * @param  Builder  $query
-     * @param  string  $direction
+     * @param Builder $query
+     * @param string $direction
      * @return $this
-     *
      * @deprecated
      */
     public function orderBy(Builder $query, $direction)
@@ -363,7 +365,6 @@ abstract class TableColumn implements ColumnInterface
 
     /**
      * Get related model configuration.
-     *
      * @return ModelConfigurationInterface
      */
     protected function getModelConfiguration()

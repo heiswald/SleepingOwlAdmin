@@ -13,11 +13,7 @@
 <div class="card card-default {!! $card_class !!}">
 	<div class="card-heading card-header">
 		@if ($creatable)
-			{{--
-			Please do not add any additional classes to this button like mb-3 or other.
-			For local visual changes use custom css file and selector .btn-create
-			--}}
-			<a href="{{ url($createUrl) }}" class="btn btn-primary btn-create">
+			<a href="{{ url($createUrl) }}" class="btn btn-primary btn-create mb-3">
 				<i class="fas fa-plus"></i> {{ $newEntryButtonText }}
 			</a>
 		@endif

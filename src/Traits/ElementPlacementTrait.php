@@ -13,7 +13,8 @@ trait ElementPlacementTrait
     }
 
     /**
-     * @param  string  $tag
+     * @param string $tag
+     *
      * @return $this
      */
     public function setTag($tag)
@@ -32,7 +33,8 @@ trait ElementPlacementTrait
     }
 
     /**
-     * @param  string  $placement
+     * @param string $placement
+     *
      * @return $this
      */
     public function setPlacement($placement)
@@ -44,7 +46,6 @@ trait ElementPlacementTrait
 
     /**
      * @return string
-     *
      * @deprecated use getPlacement()
      */
     public function getPosition()
@@ -53,9 +54,9 @@ trait ElementPlacementTrait
     }
 
     /**
-     * @param  string  $position
-     * @return $this
+     * @param string $position
      *
+     * @return $this
      * @deprecated use setPlacement(string $placement)
      */
     public function setPosition($position)

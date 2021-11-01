@@ -7,7 +7,8 @@ use SleepingOwl\Admin\Navigation\Page;
 interface PageInterface extends NavigationInterface
 {
     /**
-     * @param  string|array|PageInterface|null  $page
+     * @param string|array|PageInterface|null $page
+     *
      * @return Page
      */
     public function addPage($page = null);

@@ -35,7 +35,7 @@ trait SelectAjaxFunctions
     protected $custom_name = 'custom_name';
 
     /**
-     * @param  string|\Closure|mixed  $custom_name
+     * @param string|\Closure|mixed $custom_name
      * @return $this
      */
     public function setCustomName($custom_name)
@@ -78,7 +78,6 @@ trait SelectAjaxFunctions
 
     /**
      * Get min symbols to search.
-     *
      * @return int
      */
     public function getMinSymbols()
@@ -88,7 +87,6 @@ trait SelectAjaxFunctions
 
     /**
      * Set min symbols to search.
-     *
      * @param $symbols
      * @return $this
      */
@@ -181,7 +179,8 @@ trait SelectAjaxFunctions
     }
 
     /**
-     * @param  string  $key
+     * @param string $key
+     *
      * @return bool
      */
     public function hasDependKey($key)
@@ -190,7 +189,8 @@ trait SelectAjaxFunctions
     }
 
     /**
-     * @param  string  $key
+     * @param string $key
+     *
      * @return mixed
      */
     public function getDependValue($key)
@@ -215,7 +215,8 @@ trait SelectAjaxFunctions
     }
 
     /**
-     * @param  array|string  $depends
+     * @param array|string $depends
+     *
      * @return $this
      */
     public function setDataDepends($depends)
@@ -226,7 +227,8 @@ trait SelectAjaxFunctions
     }
 
     /**
-     * @param  array  $params
+     * @param array $params
+     *
      * @return $this
      */
     public function setAjaxParameters(array $params)
@@ -245,9 +247,9 @@ trait SelectAjaxFunctions
     }
 
     /**
-     * @param  \Closure|null|mixed  $modelForOptionsCallback
-     * @return $this
+     * @param \Closure|null|mixed $modelForOptionsCallback
      *
+     * @return $this
      * @throws SelectException
      */
     public function setModelForOptionsCallback($modelForOptionsCallback)

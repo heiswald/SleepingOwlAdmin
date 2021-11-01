@@ -9,7 +9,8 @@ interface TreeTypeInterface
     /**
      * Get tree structure.
      *
-     * @param  \Illuminate\Database\Eloquent\Collection  $collection
+     * @param \Illuminate\Database\Eloquent\Collection $collection
+     *
      * @return mixed
      */
     public function getTree(Collection $collection);

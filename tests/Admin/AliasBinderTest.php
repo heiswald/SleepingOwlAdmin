@@ -86,7 +86,8 @@ class AliasBinderTestWithoutRoutes
 class AliasBinderTestWithRoutes implements \SleepingOwl\Admin\Contracts\WithRoutesInterface
 {
     /**
-     * @param  \Illuminate\Routing\Router  $router
+     * @param \Illuminate\Routing\Router $router
+     *
      * @return void
      */
     public static function registerRoutes(\Illuminate\Routing\Router $router)

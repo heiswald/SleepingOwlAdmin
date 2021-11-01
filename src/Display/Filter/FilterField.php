@@ -10,7 +10,8 @@ class FilterField extends FilterBase
     use SqlQueryOperators;
 
     /**
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return $this
      */
     public function setValue($value)
@@ -23,7 +24,7 @@ class FilterField extends FilterBase
     }
 
     /**
-     * @param  Builder  $query
+     * @param Builder $query
      */
     public function apply(Builder $query)
     {

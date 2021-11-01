@@ -17,7 +17,8 @@ class ControlButton extends ControlLink
     protected $method = 'post';
 
     /**
-     * @param  string  $method
+     * @param string $method
+     *
      * @return $this
      */
     public function setMethod($method)

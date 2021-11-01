@@ -51,10 +51,11 @@ class Date extends Text
     }
 
     /**
-     * @param  string  $date
-     * @param  bool  $add_day
-     * @return string
+     * @param string $date
      *
+     * @param bool   $add_day
+     *
+     * @return string
      * @throws \SleepingOwl\Admin\Exceptions\FilterOperatorException
      */
     public function parseValue($date, $add_day = false)

@@ -9,7 +9,7 @@
           data-type="textarea"
           data-pk="{{ $id }}"
           data-mode="{{ $mode }}"
-          data-emptytext="{{ trans('sleeping_owl::lang.select.empty') }}"
+          data-emptytext="{{ trans('sleeping_owl::lang.select.no_items') }}"
           {{ $isReadonly ? 'data-disabled' : '' }}
       >{{ $text }}</a>
     @else

@@ -106,7 +106,6 @@ return [
         'selected'    => 'выбрано',
         'placeholder' => 'Выберите из списка',
         'no_items'    => 'Нет элементов',
-        'empty'       => 'пусто',
         'init'        => 'Выбрать',
         'limit'       => 'и еще ${count}',
         'deselect'    => 'Сбросить',

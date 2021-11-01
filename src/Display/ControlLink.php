@@ -79,11 +79,11 @@ class ControlLink implements ControlButtonInterface
     protected $condition;
 
     /**
-     * @param  Closure  $url
-     * @param  Closure|string  $text
-     * @param  int  $position
-     * @param  string  $title
-     * @param  string  $class
+     * @param Closure $url
+     * @param Closure|string $text
+     * @param int $position
+     * @param string $title
+     * @param string $class
      */
     public function __construct(Closure $url, $text, $position = 0, $title = null, $class = null)
     {
@@ -109,7 +109,7 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
      * @return $this
      */
     public function getConditionAttributes(Model $model)
@@ -127,7 +127,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Closure  $condition
+     * @param Closure $condition
+     *
      * @return $this
      */
     public function setCondition(Closure $condition)
@@ -139,8 +140,8 @@ class ControlLink implements ControlButtonInterface
 
     /**
      * Set condition attribute.
+     * @param Closure $condition
      *
-     * @param  Closure  $condition
      * @return $this
      */
     public function setAttributeCondition(Closure $condition)
@@ -179,7 +180,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Closure  $closure
+     * @param Closure $closure
+     *
      * @return $this
      */
     public function setUrl(Closure $closure)
@@ -190,7 +192,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return mixed
      */
     public function getUrl(Model $model)
@@ -199,7 +202,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Model|null  $model
+     * @param Model|null $model
+     *
      * @return mixed
      */
     public function getText($model = null)
@@ -230,7 +234,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Closure|string  $text
+     * @param Closure|string $text
+     *
      * @return $this
      */
     public function setText($text)
@@ -241,7 +246,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Closure|string  $title
+     * @param Closure|string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -260,7 +266,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Closure|string  $image
+     * @param Closure|string $image
+     *
      * @return $this
      */
     public function setImage($image)
@@ -279,7 +286,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  string  $icon
+     * @param string $icon
+     *
      * @return $this
      */
     public function setIcon($icon)
@@ -298,7 +306,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  string  $class
+     * @param string $class
+     *
      * @return $this
      */
     public function setClass($class)
@@ -309,7 +318,8 @@ class ControlLink implements ControlButtonInterface
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return $this
      */
     public function setModel(Model $model)

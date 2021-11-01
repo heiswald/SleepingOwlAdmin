@@ -49,6 +49,7 @@ class Range extends BaseColumnFilter
 
     /**
      * @param $inline
+     *
      * @return $this
      */
     public function setInline($inline)
@@ -67,7 +68,8 @@ class Range extends BaseColumnFilter
     }
 
     /**
-     * @param  ColumnFilterInterface  $from
+     * @param ColumnFilterInterface $from
+     *
      * @return $this
      */
     public function setFrom(ColumnFilterInterface $from)
@@ -86,7 +88,8 @@ class Range extends BaseColumnFilter
     }
 
     /**
-     * @param  ColumnFilterInterface  $to
+     * @param ColumnFilterInterface $to
+     *
      * @return $this
      */
     public function setTo(ColumnFilterInterface $to)
@@ -108,9 +111,8 @@ class Range extends BaseColumnFilter
     }
 
     /**
-     * @param  mixed  $range
+     * @param mixed $range
      * @return array|mixed|null|void
-     *
      * @throws \SleepingOwl\Admin\Exceptions\FilterOperatorException
      */
     public function parseValue($range)

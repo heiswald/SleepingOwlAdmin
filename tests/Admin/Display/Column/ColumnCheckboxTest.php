@@ -10,7 +10,8 @@ class ColumnCheckboxTest extends TestCase
     }
 
     /**
-     * @param  string|null  $label
+     * @param string|null $label
+     *
      * @return \SleepingOwl\Admin\Display\Column\Checkbox
      */
     protected function getColumn($label = null)

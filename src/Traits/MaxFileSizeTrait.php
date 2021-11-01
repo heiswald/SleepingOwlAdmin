@@ -30,7 +30,8 @@ trait MaxFileSizeTrait
     /**
      * Конвертация значения размера загружаемого файла.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return number Размер файла в килобайтах
      */
     public function convertKB($value)

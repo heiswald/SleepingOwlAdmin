@@ -10,7 +10,8 @@ interface NamedColumnInterface
     public function getName();
 
     /**
-     * @param  string  $name
+     * @param string $name
+     *
      * @return $this
      */
     public function setName($name);

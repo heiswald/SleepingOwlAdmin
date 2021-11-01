@@ -7,7 +7,8 @@ use Illuminate\Contracts\Routing\Registrar;
 interface AliasBinderInterface
 {
     /**
-     * @param  \Illuminate\Contracts\Routing\Registrar  $router
+     * @param \Illuminate\Contracts\Routing\Registrar $router
+     *
      * @return void
      */
     public static function registerRoutes(Registrar $router);
@@ -15,14 +16,16 @@ interface AliasBinderInterface
     /**
      * Bind new alias.
      *
-     * @param  string  $alias
-     * @param  string  $class
+     * @param string $alias
+     * @param string $class
+     *
      * @return $this
      */
     public function bind($alias, $class);
 
     /**
-     * @param  array  $classes
+     * @param array $classes
+     *
      * @return $this
      */
     public function register(array $classes);
@@ -35,7 +38,8 @@ interface AliasBinderInterface
     /**
      * Get class name by alias.
      *
-     * @param  string  $alias
+     * @param string $alias
+     *
      * @return string
      */
     public function getAlias($alias);
@@ -43,14 +47,16 @@ interface AliasBinderInterface
     /**
      * Check if alias is registered.
      *
-     * @param  string  $alias
+     * @param string $alias
+     *
      * @return bool
      */
     public function hasAlias($alias);
 
     /**
-     * @param  string  $alias
-     * @param  array  $arguments
+     * @param string $alias
+     * @param array $arguments
+     *
      * @return object
      */
     public function makeClass($alias, array $arguments);

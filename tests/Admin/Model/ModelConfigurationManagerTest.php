@@ -12,9 +12,8 @@ class ModelConfigurationManagerTest extends TestCase
     }
 
     /**
-     * @param  string  $class
+     * @param string $class
      * @return \PHPUnit\Framework\MockObject\MockObject
-     *
      * @throws ReflectionException
      */
     protected function getConfiguration($class = ModelConfigurationManagerTestModel::class)

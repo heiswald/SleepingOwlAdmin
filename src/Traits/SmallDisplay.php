@@ -31,8 +31,9 @@ trait SmallDisplay
     }
 
     /**
-     * @param  string|Closure  $small
-     * @param  bool  $asString
+     * @param string|Closure $small
+     * @param bool $asString
+     *
      * @return $this
      */
     public function setSmall($small, $asString = false)
@@ -44,7 +45,8 @@ trait SmallDisplay
     }
 
     /**
-     * @param  bool  $isolatedHTML
+     * @param bool $isolatedHTML
+     *
      * @return $this
      */
     public function setIsolated($isolatedHTML)

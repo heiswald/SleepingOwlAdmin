@@ -29,8 +29,8 @@ abstract class FilterBase implements FilterInterface
     protected $value;
 
     /**
-     * @param  string  $name
-     * @param  string|\Closure|null  $title
+     * @param string $name
+     * @param string|\Closure|null $title
      */
     public function __construct($name, $title = null)
     {
@@ -62,7 +62,8 @@ abstract class FilterBase implements FilterInterface
     }
 
     /**
-     * @param  string  $name
+     * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -85,7 +86,8 @@ abstract class FilterBase implements FilterInterface
     }
 
     /**
-     * @param  string  $alias
+     * @param string $alias
+     *
      * @return $this
      */
     public function setAlias($alias)
@@ -112,7 +114,8 @@ abstract class FilterBase implements FilterInterface
     }
 
     /**
-     * @param  Closure|string  $title
+     * @param Closure|string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -131,7 +134,8 @@ abstract class FilterBase implements FilterInterface
     }
 
     /**
-     * @param  mixed  $value
+     * @param mixed $value
+     *
      * @return $this
      */
     public function setValue($value)

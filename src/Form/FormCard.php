@@ -27,7 +27,7 @@ class FormCard extends FormDefault
     /**
      * FormCard constructor.
      *
-     * @param  array  $elements
+     * @param array $elements
      */
     public function __construct(array $elements = [])
     {
@@ -49,7 +49,8 @@ class FormCard extends FormDefault
     }
 
     /**
-     * @param  array|FormElementInterface  $items
+     * @param array|FormElementInterface $items
+     *
      * @return $this
      */
     public function setItems($items)
@@ -64,7 +65,8 @@ class FormCard extends FormDefault
     }
 
     /**
-     * @param  FormElementInterface  $item
+     * @param FormElementInterface $item
+     *
      * @return $this
      */
     public function addItem($item)
@@ -79,7 +81,8 @@ class FormCard extends FormDefault
     }
 
     /**
-     * @param  array|FormElementInterface  $items
+     * @param array|FormElementInterface $items
+     *
      * @return $this
      */
     public function addHeader($items)
@@ -94,7 +97,8 @@ class FormCard extends FormDefault
     }
 
     /**
-     * @param  array|FormElementInterface  $items
+     * @param array|FormElementInterface $items
+     *
      * @return $this
      */
     public function addBody($items)
@@ -114,7 +118,8 @@ class FormCard extends FormDefault
     }
 
     /**
-     * @param  array|FormElementInterface  $items
+     * @param array|FormElementInterface $items
+     *
      * @return $this
      */
     public function addFooter($items)

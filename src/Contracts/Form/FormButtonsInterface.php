@@ -10,7 +10,8 @@ use SleepingOwl\Admin\Contracts\WithModelInterface;
 interface FormButtonsInterface extends Renderable, Arrayable, WithModelInterface
 {
     /**
-     * @param  ModelConfigurationInterface  $modelConfiguration
+     * @param ModelConfigurationInterface $modelConfiguration
+     *
      * @return $this
      */
     public function setModelConfiguration(ModelConfigurationInterface $modelConfiguration);

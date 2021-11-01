@@ -25,7 +25,8 @@ class Password extends NamedFormElement
     protected $view = 'form.element.password';
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
     public function save(\Illuminate\Http\Request $request)

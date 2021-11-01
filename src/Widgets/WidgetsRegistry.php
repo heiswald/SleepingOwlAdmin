@@ -24,7 +24,7 @@ class WidgetsRegistry implements WidgetsRegistryInterface
     /**
      * BlocksRegistry constructor.
      *
-     * @param  Container  $container
+     * @param Container $container
      */
     public function __construct(Container $container)
     {
@@ -34,6 +34,7 @@ class WidgetsRegistry implements WidgetsRegistryInterface
 
     /**
      * @param $widget
+     *
      * @return $this
      */
     public function registerWidget($widget)
@@ -44,7 +45,7 @@ class WidgetsRegistry implements WidgetsRegistryInterface
     }
 
     /**
-     * @param  Factory  $factory
+     * @param Factory $factory
      */
     public function placeWidgets(Factory $factory)
     {
@@ -85,7 +86,7 @@ class WidgetsRegistry implements WidgetsRegistryInterface
     }
 
     /**
-     * @param  mixed  $widget
+     * @param mixed $widget
      * @return mixed
      */
     public function makeWidget($widget)
@@ -95,6 +96,7 @@ class WidgetsRegistry implements WidgetsRegistryInterface
 
     /**
      * @param $widget
+     *
      * @return \Closure
      */
     public function createClassWidget($widget)

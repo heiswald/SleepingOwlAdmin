@@ -1,5 +1,3 @@
-import draggable from 'vuedraggable'
-
 Vue.component('related-elements', {
     props: {
         limit: {
@@ -18,11 +16,6 @@ Vue.component('related-elements', {
         label: {
             type: String,
             required: false,
-        },
-
-        draggable: {
-            type: Boolean,
-            default: false
         },
     },
 
@@ -90,9 +83,5 @@ Vue.component('related-elements', {
                 this.newGroups.splice(this.newGroups.indexOf(index), 1);
             }
         },
-    },
-
-    components: {
-        draggable
     },
 });

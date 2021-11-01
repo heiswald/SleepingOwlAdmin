@@ -72,10 +72,10 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     protected $view = 'display.tab';
 
     /**
-     * @param  Renderable  $content
-     * @param  string|null  $label
-     * @param  string|null  $icon
-     * @param  Badge|string|\Closure|null  $badge
+     * @param Renderable $content
+     * @param string|null $label
+     * @param string|null $icon
+     * @param Badge|string|\Closure|null $badge
      */
     public function __construct(Renderable $content, $label = null, $icon = null, $badge = null)
     {
@@ -98,7 +98,7 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  Badge|string|\Closure|null  $badge
+     * @param Badge|string|\Closure|null $badge
      * @return $this
      */
     public function setBadge($badge)
@@ -133,7 +133,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  string  $label
+     * @param string $label
+     *
      * @return $this
      */
     public function setLabel($label)
@@ -152,7 +153,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  bool  $active
+     * @param bool $active
+     *
      * @return $this
      */
     public function setActive($active = true)
@@ -168,7 +170,6 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
 
     /**
      * @return $this
-     *
      * @throws \SleepingOwl\Admin\Exceptions\Display\DisplayTabException
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormElementException
      */
@@ -227,7 +228,6 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
 
     /**
      * @return string
-     *
      * @throws DisplayTabException
      */
     public function getName()
@@ -242,7 +242,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  string  $name
+     * @param string $name
+     *
      * @return $this
      */
     public function setName($name)
@@ -261,7 +262,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  string  $icon
+     * @param string $icon
+     *
      * @return $this
      */
     public function setIcon($icon)
@@ -280,7 +282,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  string  $class
+     * @param string $class
+     *
      * @return $this
      */
     public function setModelClass($class)
@@ -307,7 +310,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  string  $action
+     * @param string $action
+     *
      * @return $this
      */
     public function setAction($action)
@@ -320,7 +324,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  bool  $bool
+     * @param bool $bool
+     *
      * @return $this
      */
     public function setExternalForm($bool)
@@ -339,7 +344,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  int  $id
+     * @param int $id
+     *
      * @return $this
      */
     public function setId($id)
@@ -352,8 +358,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
-     * @param  ModelConfigurationInterface  $model
+     * @param \Illuminate\Http\Request $request
+     * @param ModelConfigurationInterface $model
      *
      * @throws ValidationException
      */
@@ -367,8 +373,9 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     /**
      * Save model.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  ModelConfigurationInterface  $model
+     * @param \Illuminate\Http\Request $request
+     * @param ModelConfigurationInterface $model
+     *
      * @return void
      */
     public function saveForm(\Illuminate\Http\Request $request, ModelConfigurationInterface $model = null)
@@ -381,7 +388,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     /**
      * Set currently rendered instance.
      *
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return $this
      */
     public function setModel(Model $model)
@@ -405,7 +413,6 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
 
     /**
      * Get form item validation rules.
-     *
      * @return array
      */
     public function getValidationRules()
@@ -442,7 +449,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
     public function save(\Illuminate\Http\Request $request)
@@ -453,7 +461,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return void
      */
     public function afterSave(\Illuminate\Http\Request $request)
@@ -510,7 +519,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  string  $path
+     * @param string $path
+     *
      * @return FormElementInterface|null
      */
     public function getElement($path)
@@ -533,7 +543,8 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
     }
 
     /**
-     * @param  array  $elements
+     * @param array $elements
+     *
      * @return $this
      */
     public function setElements(array $elements)
@@ -547,7 +558,6 @@ class DisplayTab implements TabInterface, DisplayInterface, FormInterface
 
     /**
      * @return array
-     *
      * @throws \SleepingOwl\Admin\Exceptions\Display\DisplayTabException
      */
     public function toArray()

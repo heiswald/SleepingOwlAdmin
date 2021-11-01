@@ -11,21 +11,18 @@ class BaseRepository implements RepositoryInterface
 {
     /**
      * Repository related class name.
-     *
      * @var string
      */
     protected $class;
 
     /**
      * Repository related model instance.
-     *
      * @var Model
      */
     protected $model;
 
     /**
      * Eager loading relations.
-     *
      * @var string[]
      */
     protected $with = [];
@@ -39,9 +36,9 @@ class BaseRepository implements RepositoryInterface
     }
 
     /**
-     * @param  string  $class
-     * @return $this
+     * @param string $class
      *
+     * @return $this
      * @throws RepositoryException
      */
     public function setClass($class)
@@ -66,7 +63,8 @@ class BaseRepository implements RepositoryInterface
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return $this
      */
     public function setModel(Model $model)
@@ -86,7 +84,8 @@ class BaseRepository implements RepositoryInterface
     }
 
     /**
-     * @param  string[]  $with
+     * @param string[] $with
+     *
      * @return $this
      */
     public function with($with)
@@ -102,7 +101,6 @@ class BaseRepository implements RepositoryInterface
 
     /**
      * Get base query.
-     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function getQuery()
@@ -117,7 +115,8 @@ class BaseRepository implements RepositoryInterface
     /**
      * Find model instance by id.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return mixed
      */
     public function find($id)
@@ -133,7 +132,8 @@ class BaseRepository implements RepositoryInterface
     /**
      * Find model instance by id.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return mixed
      */
     public function findOnlyTrashed($id)
@@ -144,7 +144,8 @@ class BaseRepository implements RepositoryInterface
     /**
      * Find model instances by ids.
      *
-     * @param  int[]  $ids
+     * @param int[] $ids
+     *
      * @return \Illuminate\Support\Collection
      */
     public function findMany(array $ids)
@@ -160,7 +161,7 @@ class BaseRepository implements RepositoryInterface
     /**
      * Delete model instance by id.
      *
-     * @param  int  $id
+     * @param int $id
      */
     public function delete($id)
     {
@@ -170,7 +171,7 @@ class BaseRepository implements RepositoryInterface
     /**
      * Permanently delete model instance by id.
      *
-     * @param  int  $id
+     * @param int $id
      */
     public function forceDelete($id)
     {
@@ -180,7 +181,7 @@ class BaseRepository implements RepositoryInterface
     /**
      * Restore model instance by id.
      *
-     * @param  int  $id
+     * @param int $id
      */
     public function restore($id)
     {

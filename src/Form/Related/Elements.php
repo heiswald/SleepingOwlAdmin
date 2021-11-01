@@ -21,74 +21,17 @@ use SleepingOwl\Admin\Form\Columns\Columns;
 use SleepingOwl\Admin\Form\Element\Custom;
 use SleepingOwl\Admin\Form\Element\NamedFormElement;
 use SleepingOwl\Admin\Form\FormElements;
-use SleepingOwl\Admin\Traits\Collapsed;
 use Throwable;
 
 abstract class Elements extends FormElements
 {
     use HtmlAttributes, HasUniqueValidation, ManipulatesRequestRelations;
-    use Collapsed;
 
-    protected $view = 'form.element.related.elements_without_card';
+    protected $view = 'form.element.related.elements';
 
     const NEW_ITEM = 'new';
 
     const REMOVE = 'remove';
-
-    /**
-     * @var bool|callable
-     */
-    protected $deletable = true;
-
-    /**
-     * @return bool|callable
-     */
-    public function isDeletable()
-    {
-        if (is_callable($this->deletable)) {
-            return (bool) call_user_func($this->deletable, $this->getModel());
-        }
-
-        return (bool) $this->deletable;
-    }
-
-    /**
-     * @param  Closure|bool  $readonly
-     * @return $this
-     */
-    public function setDeletable($deletable)
-    {
-        $this->deletable = $deletable;
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setCard(): self
-    {
-        $this->view = 'form.element.related.elements';
-
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function setMaxHeight($maxHeight): self
-    {
-        $this->setHtmlAttributes([
-            'style' => 'overflow-y:auto;max-height:'.$maxHeight,
-        ]);
-
-        return $this;
-    }
-
-    /**
-     * @var bool|null
-     */
-    protected $collapsed;
 
     /**
      * How many items can be created.
@@ -167,11 +110,6 @@ abstract class Elements extends FormElements
         $this->toRemove = collect();
         $this->groups = collect();
         $this->relatedValues = collect();
-
-        if (config('sleeping_owl.useRelationCard')) {
-            $this->setCard();
-        }
-
         parent::__construct($elements);
 
         $this->setRelationName($relationName);
@@ -179,7 +117,8 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  int  $limit
+     * @param int $limit
+     *
      * @return $this
      */
     public function setLimit(int $limit): self
@@ -260,7 +199,9 @@ abstract class Elements extends FormElements
 
     /**
      * @param $item
-     * @param  array  $columns
+     *
+     * @param array $columns
+     *
      * @return string
      */
     protected function getCompositeKey($item, array $columns): string
@@ -336,9 +277,9 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  Model  $model
-     * @return FormElements|void
+     * @param Model $model
      *
+     * @return FormElements|void
      * @throws \Illuminate\Database\Eloquent\ModelNotFoundException
      */
     public function setModel(Model $model)
@@ -378,6 +319,7 @@ abstract class Elements extends FormElements
      * Sets relation name property.
      *
      * @param string
+     *
      * @return Elements
      */
     public function setRelationName(string $name): self
@@ -510,8 +452,9 @@ abstract class Elements extends FormElements
     /**
      * Returns value from model for given element.
      *
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  NamedFormElement  $el
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param NamedFormElement $el
+     *
      * @return mixed|null
      */
     protected function getElementValue(Model $model, NamedFormElement $el)
@@ -543,7 +486,7 @@ abstract class Elements extends FormElements
     /**
      * Applies given callback to every element of form.
      *
-     * @param  \Illuminate\Support\Collection  $elements
+     * @param \Illuminate\Support\Collection $elements
      * @param $callback
      */
     protected function forEachElement(Collection $elements, $callback)
@@ -556,7 +499,8 @@ abstract class Elements extends FormElements
     /**
      * Returns flat collection of elements in form ignoring everything but NamedFormElement. Works recursive.
      *
-     * @param  \Illuminate\Support\Collection  $elements
+     * @param \Illuminate\Support\Collection $elements
+     *
      * @return mixed
      */
     protected function flatNamedElements(Collection $elements)
@@ -580,8 +524,8 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
-     * @param  array  $attributes
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param array $attributes
      * @return \Illuminate\Database\Eloquent\Model
      */
     protected function safeFillModel(Model $model, array $attributes = []): Model
@@ -620,7 +564,7 @@ abstract class Elements extends FormElements
     /**
      * Saves request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      */
     public function save(Request $request)
     {
@@ -633,7 +577,7 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  array  $rules
+     * @param array $rules
      * @return array
      */
     public function getValidationRulesFromElements(array $rules = []): array
@@ -646,7 +590,7 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  array  $messages
+     * @param array $messages
      * @return array
      */
     public function getValidationMessagesForElements(array $messages = []): array
@@ -659,8 +603,7 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  \Illuminate\Http\Request  $request
-     *
+     * @param \Illuminate\Http\Request $request
      * @throws \Throwable
      */
     public function afterSave(Request $request)
@@ -694,7 +637,7 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
      * @return array
      */
     protected function modifyValidationParameters(array $parameters): array
@@ -726,13 +669,12 @@ abstract class Elements extends FormElements
             'limit' => $this->limit,
             'attributes' => $this->htmlAttributesToString(),
             'helpText' => $this->getHelpText(),
-            'collapsed' => $this->getCollapsed(),
-            'deletable' => $this->isDeletable(),
         ];
     }
 
     /**
-     * @param  string  $groupLabel
+     * @param string $groupLabel
+     *
      * @return Elements|\Illuminate\Database\Eloquent\Model
      */
     public function setGroupLabel(string $groupLabel): self
@@ -760,6 +702,7 @@ abstract class Elements extends FormElements
      * Appends fresh related model if total count is not exceeding limit.
      *
      * @param $key
+     *
      * @return $this
      */
     protected function addOrGetRelated($key)
@@ -796,7 +739,8 @@ abstract class Elements extends FormElements
     }
 
     /**
-     * @param  string|Htmlable  $helpText
+     * @param string|Htmlable $helpText
+     *
      * @return $this
      */
     public function setHelpText($helpText)
@@ -825,7 +769,8 @@ abstract class Elements extends FormElements
     /**
      * Proceeds saving related values after all validations passes.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return mixed
      */
     abstract protected function proceedSave(Request $request);
@@ -833,7 +778,8 @@ abstract class Elements extends FormElements
     /**
      * Here you must add all new relations to main collection and etc.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return mixed
      */
     abstract protected function prepareRelatedValues(array $data);

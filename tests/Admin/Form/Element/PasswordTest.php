@@ -13,7 +13,6 @@ class PasswordTest extends \TestCase
 
     /**
      * @covers \SleepingOwl\Admin\Form\Element\Password::getValueFromModel()
-     *
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormElementException
      */
     public function test_gets_value_from_request()

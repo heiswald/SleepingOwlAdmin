@@ -132,7 +132,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $alias
+     * @param string $alias
+     *
      * @return $this
      */
     public function setAlias($alias)
@@ -143,7 +144,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $title
+     * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -166,7 +168,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $title
+     * @param string $title
+     *
      * @return $this
      */
     public function setCreateTitle($title)
@@ -177,7 +180,7 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
      * @return string
      */
     public function getEditTitle()
@@ -190,7 +193,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $title
+     * @param string $title
+     *
      * @return $this
      */
     public function setEditTitle($title)
@@ -219,8 +223,9 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $action
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param string $action
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function can($action, Model $model)
@@ -255,7 +260,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return bool
      */
     public function isEditable(Model $model)
@@ -278,7 +284,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  bool  $deletable
+     * @param bool $deletable
+     *
      * @return $this
      */
     public function setDeletable($deletable)
@@ -289,7 +296,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return bool
      */
     public function isDeletable(Model $model)
@@ -308,7 +316,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return bool
      */
     public function isDestroyable(Model $model)
@@ -327,7 +336,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return bool
      */
     public function isRestorable(Model $model)
@@ -362,7 +372,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure  $callback
+     * @param Closure $callback
+     *
      * @return $this
      */
     public function onDisplay(Closure $callback)
@@ -373,7 +384,7 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  mixed  $payload
+     * @param mixed $payload
      * @return DisplayInterface|mixed|void
      */
     public function fireDisplay($payload = [])
@@ -408,7 +419,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure|null  $callback
+     * @param Closure|null $callback
+     *
      * @return $this
      */
     public function onCreate(Closure $callback = null)
@@ -419,7 +431,7 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  mixed  $payload
+     * @param mixed $payload
      * @return mixed|void
      */
     public function fireCreate($payload = [])
@@ -454,7 +466,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure|null  $callback
+     * @param Closure|null $callback
+     *
      * @return $this
      */
     public function onEdit(Closure $callback = null)
@@ -465,8 +478,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  int|string  $id
-     * @param  mixed  $payload
+     * @param int|string $id
+     * @param mixed $payload
      * @return mixed|void
      */
     public function fireEdit($id, $payload = [])
@@ -499,7 +512,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure|null  $callback
+     * @param Closure|null $callback
+     *
      * @return $this
      */
     public function onCreateAndEdit(Closure $callback = null)
@@ -519,7 +533,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure|null  $callback
+     * @param Closure|null $callback
+     *
      * @return $this
      */
     public function onDelete(Closure $callback = null)
@@ -530,7 +545,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return mixed
      */
     public function fireDelete($id)
@@ -549,7 +565,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure|null  $callback
+     * @param Closure|null $callback
+     *
      * @return $this
      */
     public function onDestroy(Closure $callback = null)
@@ -560,7 +577,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return mixed
      */
     public function fireDestroy($id)
@@ -579,7 +597,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  Closure|null  $callback
+     * @param Closure|null $callback
+     *
      * @return $this
      */
     public function onRestore(Closure $callback = null)
@@ -590,7 +609,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return bool|mixed
      */
     public function fireRestore($id)
@@ -613,7 +633,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $messageOnCreate
+     * @param string $messageOnCreate
+     *
      * @return $this
      */
     public function setMessageOnCreate($messageOnCreate)
@@ -636,7 +657,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $messageOnUpdate
+     * @param string $messageOnUpdate
+     *
      * @return $this
      */
     public function setMessageOnUpdate($messageOnUpdate)
@@ -659,7 +681,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $messageOnDelete
+     * @param string $messageOnDelete
+     *
      * @return $this
      */
     public function setMessageOnDelete($messageOnDelete)
@@ -682,7 +705,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $messageOnDestroy
+     * @param string $messageOnDestroy
+     *
      * @return $this
      */
     public function setMessageOnDestroy($messageOnDestroy)
@@ -705,7 +729,8 @@ class ModelConfiguration extends ModelConfigurationManager
     }
 
     /**
-     * @param  string  $messageOnRestore
+     * @param string $messageOnRestore
+     *
      * @return $this
      */
     public function setMessageOnRestore($messageOnRestore)

@@ -67,7 +67,8 @@ class DisplayDatatables extends DisplayTable
     }
 
     /**
-     * @param  array  $datatableAttributes
+     * @param array $datatableAttributes
+     *
      * @return $this
      */
     public function setDatatableAttributes(array $datatableAttributes)
@@ -86,7 +87,8 @@ class DisplayDatatables extends DisplayTable
     }
 
     /**
-     * @param  array  $order
+     * @param array $order
+     *
      * @return $this
      */
     public function setOrder($order)
@@ -120,7 +122,6 @@ class DisplayDatatables extends DisplayTable
 
     /**
      * @return array
-     *
      * @throws \Exception
      */
     public function toArray()

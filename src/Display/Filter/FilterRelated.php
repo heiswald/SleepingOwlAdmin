@@ -27,7 +27,8 @@ class FilterRelated extends FilterField
     }
 
     /**
-     * @param  string  $display
+     * @param string $display
+     *
      * @return $this
      */
     public function setDisplay($display)
@@ -46,9 +47,9 @@ class FilterRelated extends FilterField
     }
 
     /**
-     * @param  string  $model
-     * @return $this
+     * @param string $model
      *
+     * @return $this
      * @throws Exception
      */
     public function setModel($model)
@@ -64,7 +65,6 @@ class FilterRelated extends FilterField
 
     /**
      * @return null|string
-     *
      * @throws Exception
      */
     public function getTitle()
@@ -78,7 +78,6 @@ class FilterRelated extends FilterField
 
     /**
      * @return null|
-     *
      * @throws Exception
      */
     protected function getDisplayField()

@@ -16,7 +16,8 @@ interface ControlButtonInterface extends Renderable, Arrayable, WithModelInterfa
     public function getPosition();
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return mixed
      */
     public function getUrl(Model $model);

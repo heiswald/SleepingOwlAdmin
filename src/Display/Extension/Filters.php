@@ -35,7 +35,8 @@ class Filters extends Extension implements Initializable
     }
 
     /**
-     * @param  array|FilterInterface  $filters
+     * @param array|FilterInterface $filters
+     *
      * @return \SleepingOwl\Admin\Contracts\Display\DisplayInterface
      */
     public function set($filters)
@@ -62,7 +63,8 @@ class Filters extends Extension implements Initializable
     }
 
     /**
-     * @param  FilterInterface  $filter
+     * @param FilterInterface $filter
+     *
      * @return $this
      */
     public function push(FilterInterface $filter)
@@ -83,7 +85,8 @@ class Filters extends Extension implements Initializable
     }
 
     /**
-     * @param  string  $title
+     * @param string $title
+     *
      * @return $this
      */
     public function setTitle($title)
@@ -118,7 +121,7 @@ class Filters extends Extension implements Initializable
     }
 
     /**
-     * @param  Builder  $query
+     * @param Builder $query
      */
     public function modifyQuery(Builder $query)
     {

@@ -6,7 +6,6 @@ class DateTimeTest extends TestCase
 {
     /**
      * @return DateTime
-     *
      * @throws \SleepingOwl\Admin\Exceptions\Form\FormElementException
      */
     protected function getElement()

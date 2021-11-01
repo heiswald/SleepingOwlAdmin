@@ -35,7 +35,6 @@ interface FilterInterface extends Initializable
 
     /**
      * Is filter active?
-     *
      * @return bool
      */
     public function isActive();
@@ -48,7 +47,7 @@ interface FilterInterface extends Initializable
     /**
      * Apply filter to the query.
      *
-     * @param  Builder  $query
+     * @param Builder $query
      */
     public function apply(Builder $query);
 }

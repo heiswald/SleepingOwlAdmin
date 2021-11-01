@@ -22,7 +22,7 @@ class SimpleTreeType implements TreeTypeInterface
     }
 
     /**
-     * @param  TreeRepositoryInterface  $repository
+     * @param TreeRepositoryInterface $repository
      */
     public function __construct(TreeRepositoryInterface $repository)
     {
@@ -32,7 +32,8 @@ class SimpleTreeType implements TreeTypeInterface
     /**
      * Get tree structure.
      *
-     * @param  \Illuminate\Database\Eloquent\Collection  $collection
+     * @param \Illuminate\Database\Eloquent\Collection $collection
+     *
      * @return mixed
      */
     public function getTree(Collection $collection)
@@ -60,8 +61,8 @@ class SimpleTreeType implements TreeTypeInterface
     }
 
     /**
-     * @param  array  $data
-     * @param  int  $parentId
+     * @param array $data
+     * @param int $parentId
      */
     protected function recursiveReorder(array $data, $parentId)
     {
@@ -84,6 +85,7 @@ class SimpleTreeType implements TreeTypeInterface
      *
      * @param $collection
      * @param $id
+     *
      * @return Collection
      */
     protected function getChildren($collection, $id)

@@ -27,7 +27,8 @@ class Lists extends NamedColumn
     protected $sortable = false;
 
     /**
-     * @param  bool  $sortable
+     * @param bool $sortable
+     *
      * @return $this
      */
     public function setSortable($sortable)

@@ -21,7 +21,8 @@ class Scopes extends Extension
     }
 
     /**
-     * @param  array|string  $scopes
+     * @param array|string $scopes
+     *
      * @return DisplayInterface|Scopes
      */
     public function set($scopes)
@@ -36,7 +37,8 @@ class Scopes extends Extension
     }
 
     /**
-     * @param  string  $scope
+     * @param string $scope
+     *
      * @return $this
      */
     public function push($scope)
@@ -63,7 +65,7 @@ class Scopes extends Extension
     }
 
     /**
-     * @param  Builder  $query
+     * @param Builder $query
      */
     public function modifyQuery(Builder $query)
     {

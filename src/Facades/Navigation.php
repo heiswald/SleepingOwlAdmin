@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * Class Navigation.
- *
  * @method static \SleepingOwl\Admin\Navigation setFromArray(array $navigation)
  */
 class Navigation extends Facade

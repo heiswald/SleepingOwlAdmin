@@ -20,30 +20,17 @@
                 @endif
             @endforeach
         </div>
-
-        @if (!$readonly)
-          <div class='grouped-element__footer form-group clearfix'>
-            @if (isset($draggable) && $draggable)
-              <a class="btn btn-clear btn-sm pull-left mr-1 drag-cursor drag-handle">
-                <i class="fas fa-fw fa-arrows-alt"></i>
-              </a>
-            @endif
-
-            @if ($deletable)
-              <button type='button'
-                v-if="canRemove"
-                @click="handleRemove"
-                data-original-text='{{ trans('sleeping_owl::lang.button.remove') }}'
-                data-toggle='tooltip'
-                class='btn btn-warning pull-right btn-sm grouped-element__delete'>
+        <div class='grouped-element__footer form-group clearfix'>
+            <button type='button'
+                    v-if="canRemove"
+                    @click="handleRemove"
+                    data-original-text='Удалить'
+                    data-toggle='tooltip'
+                    class='btn btn-warning pull-right btn-sm grouped-element__delete'>
                 <i class='fas fa-trash'></i>
                 {{ trans('sleeping_owl::lang.button.remove') }}
-              </button>
-            @endif
-
-          </div>
-        @endif
-
+            </button>
+        </div>
         <hr class="grouped-element__hr" />
     </div>
 </related-group>

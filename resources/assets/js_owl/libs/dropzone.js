@@ -4,9 +4,7 @@
  *
  * @see http://www.dropzonejs.com/
  */
-
 window.Dropzone = require('dropzone');
-
 Dropzone.autoDiscover = false;
 
 Dropzone.prototype.defaultOptions.headers = {

@@ -23,7 +23,8 @@ class Text extends NamedColumn
     }
 
     /**
-     * @param  \Closure|mixed  $modifier
+     * @param \Closure|mixed $modifier
+     *
      * @return $this
      */
     public function setModifier($modifier)

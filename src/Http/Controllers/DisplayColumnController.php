@@ -9,8 +9,9 @@ use SleepingOwl\Admin\Traits\OrderableModel;
 class DisplayColumnController extends Controller
 {
     /**
-     * @param  ModelConfigurationInterface  $model
-     * @param  int  $id
+     * @param ModelConfigurationInterface $model
+     * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function orderUp(ModelConfigurationInterface $model, $id)
@@ -23,8 +24,9 @@ class DisplayColumnController extends Controller
     }
 
     /**
-     * @param  ModelConfigurationInterface  $model
-     * @param  int  $id
+     * @param ModelConfigurationInterface $model
+     * @param int $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function orderDown(ModelConfigurationInterface $model, $id)

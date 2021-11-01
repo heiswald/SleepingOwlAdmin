@@ -41,7 +41,8 @@ class Tree extends Extension implements Initializable, Renderable
     }
 
     /**
-     * @param  ColumnInterface  $controlColumn
+     * @param ColumnInterface $controlColumn
+     *
      * @return $this
      */
     public function setControlColumn(ColumnInterface $controlColumn)
@@ -110,7 +111,8 @@ class Tree extends Extension implements Initializable, Renderable
     }
 
     /**
-     * @param  ColumnInterface  $column
+     * @param ColumnInterface $column
+     *
      * @return $this
      */
     public function push(ColumnInterface $column)

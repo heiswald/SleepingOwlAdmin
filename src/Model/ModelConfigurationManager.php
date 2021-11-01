@@ -38,7 +38,7 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     /**
      * Set the event dispatcher instance.
      *
-     * @param  \Illuminate\Contracts\Events\Dispatcher  $dispatcher
+     * @param \Illuminate\Contracts\Events\Dispatcher $dispatcher
      * @return void
      */
     public static function setEventDispatcher(Dispatcher $dispatcher)
@@ -111,8 +111,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     /**
      * ModelConfigurationManager constructor.
      *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
-     * @param  $class
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     * @param                                              $class
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \SleepingOwl\Admin\Exceptions\RepositoryException
@@ -156,7 +156,7 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  Model  $item
+     * @param Model $item
      */
     public function setModelValue($item)
     {
@@ -185,7 +185,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string  $icon
+     * @param string $icon
+     *
      * @return $this
      */
     public function setIcon($icon)
@@ -244,7 +245,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isEditable(Model $model)
@@ -253,7 +255,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isDeletable(Model $model)
@@ -262,7 +265,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return bool
      */
     public function isDestroyable(Model $model)
@@ -271,7 +275,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function isRestorable(Model $model)
@@ -288,9 +293,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  int  $id
-     * @return $this
+     * @param int $id
      *
+     * @return $this
      * @deprecated
      */
     public function fireFullEdit($id)
@@ -319,8 +324,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string  $action
-     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @param string $action
+     * @param \Illuminate\Database\Eloquent\Model $model
+     *
      * @return bool
      */
     public function can($action, Model $model)
@@ -333,7 +339,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string  $controllerClass
+     * @param string $controllerClass
+     *
      * @return $this
      */
     public function setControllerClass($controllerClass)
@@ -362,7 +369,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getDisplayUrl(array $parameters = [])
@@ -373,7 +381,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getCancelUrl(array $parameters = [])
@@ -382,7 +391,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getCreateUrl(array $parameters = [])
@@ -393,7 +403,8 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  array  $parameters
+     * @param array $parameters
+     *
      * @return string
      */
     public function getStoreUrl(array $parameters = [])
@@ -404,8 +415,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getEditUrl($id, array $parameters = [])
@@ -420,8 +432,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getUpdateUrl($id, array $parameters = [])
@@ -436,8 +449,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getDeleteUrl($id, array $parameters = [])
@@ -452,8 +466,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getDestroyUrl($id, array $parameters = [])
@@ -468,8 +483,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  string|int  $id
-     * @param  array  $parameters
+     * @param string|int $id
+     * @param array $parameters
+     *
      * @return string
      */
     public function getRestoreUrl($id, array $parameters = [])
@@ -532,8 +548,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  int  $priority
-     * @param  string|\Closure|BadgeInterface  $badge
+     * @param int $priority
+     * @param string|\Closure|BadgeInterface $badge
+     *
      * @return Page
      */
     public function addToNavigation($priority = 100, $badge = null)
@@ -555,8 +572,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  int  $priority
-     * @param  string|\Closure|BadgeInterface  $badge
+     * @param int $priority
+     * @param string|\Closure|BadgeInterface $badge
+     *
      * @return Page
      */
     protected function makePage($priority = 100, $badge = null)
@@ -576,7 +594,7 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  array  $redirect
+     * @param array $redirect
      * @return $this
      */
     public function setRedirect(array $redirect)
@@ -597,10 +615,11 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     /**
      * Fire the given event for the model.
      *
-     * @param  string  $event
-     * @param  bool  $halt
-     * @param  Model|null  $model
-     * @param  array  $payload
+     * @param string $event
+     * @param bool $halt
+     * @param Model|null $model
+     * @param array $payload
+     *
      * @return mixed
      */
     public function fireEvent($event, $halt = true, Model $model = null, ...$payload)
@@ -638,6 +657,7 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
      *
      * @param $method
      * @param $arguments
+     *
      * @return mixed
      */
     public function __call($method, $arguments)
@@ -655,9 +675,9 @@ abstract class ModelConfigurationManager implements ModelConfigurationInterface
     }
 
     /**
-     * @param  $event
-     * @param  $callback
-     * @param  int  $priority
+     * @param     $event
+     * @param     $callback
+     * @param int $priority
      */
     protected function registerEvent($event, $callback, $priority = 0)
     {

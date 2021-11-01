@@ -10,34 +10,21 @@ return [
     |
     */
 
-    'title'              => 'Sleeping Owl',
+    'title' => 'Sleeping Owl',
 
     /*
     |--------------------------------------------------------------------------
     | Admin Mini logo
     |--------------------------------------------------------------------------
     */
-    'logo_mini'          => 'SO',
+    'logo_mini' => 'SO',
 
     /*
     |--------------------------------------------------------------------------
     | Admin Text on sidebar top menu
     |--------------------------------------------------------------------------
     */
-    'menu_top'           => 'Main menu',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Sidebar default condition class "sidebar-collapse", "sidebar-open"
-    |--------------------------------------------------------------------------
-    | Sidebar mini show  'sidebar-mini' - 1024px , "sidebar-mini-md" - 768px,
-    | "sidebar-mini-xs" - always
-    |--------------------------------------------------------------------------
-    | Font sizes "text-sm"
-    |--------------------------------------------------------------------------
-    | See https://adminlte.io/themes/v3/# - right top corner "Customize AdminLTE"
-    */
-    'body_default_class' => 'hold-transition sidebar-mini sidebar-open',
+    'menu_top' => 'Main menu',
 
     /*
     |--------------------------------------------------------------------------
@@ -61,7 +48,7 @@ return [
     /*
      * Subdomain & Domain support routes
      */
-    'domain'     => false,
+    'domain' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -74,15 +61,7 @@ return [
     |
     */
 
-    'middleware'               => ['web'],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Favicon
-    |--------------------------------------------------------------------------
-    */
-
-    'favicon' => '/packages/sleepingowl/default/images/favicon.ico',
+    'middleware' => ['web'],
 
     /*
     |--------------------------------------------------------------------------
@@ -91,7 +70,7 @@ return [
     | Url for env editor
     |
     */
-    'env_editor_url'           => 'env/editor',
+    'env_editor_url' => 'env/editor',
 
     /*
      * Excluded keys
@@ -103,44 +82,44 @@ return [
     /*
      * Env editor middlewares
      */
-    'env_editor_middlewares'   => [],
+    'env_editor_middlewares' => [],
 
     /*
      * Enable and show link in navigation
      * 'show_editor' is @deprecated
      */
-    'enable_editor'            => false,
-    'env_keys_readonly'        => false,
-    'env_can_delete'           => true,
-    'env_can_add'              => true,
+    'enable_editor' => false,
+    'env_keys_readonly' => false,
+    'env_can_delete' => true,
+    'env_can_add' => true,
 
     /*
      * --------------------------------------------------------------------------
      * Add your policy class here.
      * --------------------------------------------------------------------------
      */
-    'env_editor_policy'        => '',
+    'env_editor_policy' => '',
 
     /*
      * --------------------------------------------------------------------------
      * DataTables state saving.
      * --------------------------------------------------------------------------
      */
-    'state_datatables'         => true,
+    'state_datatables' => true,
 
     /*
      * --------------------------------------------------------------------------
      * Tabs state remember.
      * --------------------------------------------------------------------------
      */
-    'state_tabs'               => false,
+    'state_tabs' => false,
 
     /*
      * --------------------------------------------------------------------------
      * Filters state remember in DataTables.
      * --------------------------------------------------------------------------
      */
-    'state_filters'            => false,
+    'state_filters' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -179,7 +158,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'imageLazyLoad'     => false,
+    'imageLazyLoad' => false,
     'imageLazyLoadFile' => 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
 
     /*
@@ -189,8 +168,7 @@ return [
     */
 
     'imagesAllowedExtensions' => [
-        'jpg', 'jpeg', 'png', 'gif', 'bmp', 'svg', 'webp',
-        'ico', 'jpe',
+        'jpe', 'jpeg', 'jpg', 'png', 'bmp', 'ico', 'gif',
     ],
 
     /*
@@ -254,19 +232,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Use Card
-    |--------------------------------------------------------------------------
-    |
-    | Using default cards views.
-    |
-    */
-
-    'useWysiwygCard'    => false,
-    'useRelationCard'    => false,
-    'useHasManyLocalCard'    => false,
-
-    /*
-    |--------------------------------------------------------------------------
     | Editors
     |--------------------------------------------------------------------------
     |
@@ -274,17 +239,17 @@ return [
     |
     */
 
-    'wysiwyg'                => [
-        'default'    => 'ckeditor',
+    'wysiwyg'     => [
+        'default'   => 'ckeditor',
 
         /*
          * See http://docs.ckeditor.com/#!/api/CKEDITOR.config
          */
-        'ckeditor'   => [
+        'ckeditor'  => [
             'defaultLanguage' => config('app.locale'),
-            'height'          => 200,
-            'allowedContent'  => true,
-            'extraPlugins'    => 'uploadimage,image2,justify,youtube,uploadfile',
+            'height'       => 200,
+            'allowedContent' => true,
+            'extraPlugins' => 'uploadimage,image2,justify,youtube,uploadfile',
             /*
              * WARNING!!!! CKEDITOR on D & D and UploadImageDialog
              * BY DEFAULT IMAGES WILL STORE TO imagesUploadDirectory = /images/uploads
@@ -297,14 +262,14 @@ return [
         /*
          * See https://www.tinymce.com/docs/
          */
-        'tinymce'    => [
+        'tinymce'   => [
             'height' => 200,
         ],
 
         /*
          * See https://github.com/NextStepWebs/simplemde-markdown-editor
          */
-        'simplemde'  => [
+        'simplemde' => [
             'hideIcons' => ['side-by-side', 'fullscreen'],
         ],
 
@@ -314,8 +279,8 @@ return [
         * Need jQuery
         */
         'summernote' => [
-            'height'     => 200,
-            'lang'       => 'ru-RU',
+            'height' => 200,
+            'lang' => 'ru-RU',
             'codemirror' => [
                 'theme' => 'monokai',
             ],
@@ -330,100 +295,40 @@ return [
          * Be careful: CKEditor 5 haven't html source code button feature!
          * See https://github.com/ckeditor/ckeditor5/issues/592
          */
-        'ckeditor5'  => [
+        'ckeditor5' => [
             'files' => [
                 /*
-                 * Use Classic build from CDN - provides a limited number of components and capabilities
+                 * Use Classic build from CDN
                  * See https://ckeditor.com/ckeditor-5/download/
                  */
-                //'editor' => '//cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js',
-                //'translation' => '//cdn.ckeditor.com/ckeditor5/27.1.0/classic/translations/'.config('app.locale').'.js',
+                'editor' => '//cdn.ckeditor.com/ckeditor5/23.1.0/classic/ckeditor.js',
+                'translation' => '//cdn.ckeditor.com/ckeditor5/23.1.0/classic/translations/'.config('app.locale').'.js',
                 /*
                  * Use Custom build with most-used additional plugins
                  * See https://ckeditor.com/ckeditor-5/online-builder/
                  */
-                'editor'      => '/packages/sleepingowl/ckeditor5/build/ckeditor.js',
-                'translation' => '/packages/sleepingowl/ckeditor5/build/translations/'.config('app.locale').'.js',
+                // 'editor' => '/packages/sleepingowl/ckeditor5/ckeditor.js',
+                // 'translation' => '/packages/sleepingowl/ckeditor5/translations/' . config('app.locale') . '.js',
             ],
 
-            'language'      => config('app.locale'),
+            'language' => config('app.locale'),
 
-            // Text alignment options
-            'alignment'     => [
+            'alignment' => [
                 'options' => [
-                    'left', 'center', 'right', /*'justify',*/
+                    'left', 'right',
                 ],
             ],
 
-            // Uncomment some plugins if you need to enable them
-            'removePlugins' => [
-                // See https://ckeditor.com/docs/ckeditor5/latest/api/module_heading_title-Title.html
-                'Title',
-                // See https://ckeditor.com/docs/ckeditor5/latest/features/lists/lists.html#list-styles
-                'ListStyle',
-                // See https://ckeditor.com/docs/ckeditor5/latest/features/markdown.html
-                'Markdown',
-            ],
-
-            // Toolbar components
-            'toolbar'       => [
-                // Active toolbar components
+            'toolbar' => [
                 'undo', 'redo', '|',
                 'heading', '|',
-                'bold', 'italic', 'alignment', 'fontColor', 'blockQuote', 'link', 'bulletedList', 'numberedList', 'removeFormat', '|',
-                'insertImage', 'mediaEmbed', 'insertTable', '|',
-
-                // All available toolbar components:
-                /*
-                'heading',
-                'bold', 'italic', 'underline', 'strikethrough', 'subscript', 'superscript',
-                'alignment', 'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', 'highlight',
-                'link', 'bulletedList', 'numberedList', 'outdent', 'indent',
-                'imageUpload', 'imageInsert', 'mediaEmbed', 'insertTable', 'blockQuote', 'htmlEmbed',
-                'textPartLanguage', 'codeBlock', 'code', 'pageBreak', 'horizontalLine', 'specialCharacters',
-                'undo', 'redo', 'removeFormat', '|',
-                */
+                'bold', 'italic', 'blockQuote', 'link', 'bulletedList', 'numberedList', '|',
+                'CKFinder', 'ImageUpload', 'imageTextAlternative', 'MediaEmbed', 'imageStyle:full', 'imageStyle:side', '|',
+                'insertTable', 'tableColumn', 'tableRow', 'mergeTableCells', '|',
             ],
 
-            // Images options
-            'image'         => [
-                'styles'  => [
-                    'alignLeft', 'alignCenter', 'alignRight', 'full', 'side',
-                ],
-                'toolbar' => [
-                    'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|',
-                    'imageTextAlternative', '|', 'link',
-                ],
-            ],
-
-            // Tables options
-            'table'         => [
-                'contentToolbar' => [
-                    'tableColumn', 'tableRow', 'mergeTableCells', 'tableProperties', 'tableCellProperties',
-                ],
-            ],
-
-            // Media embed options
-            'mediaEmbed'    => [
-                'toolbar'         => ['mediaEmbed'],
-                /**
-                 * @see https://ckeditor.com/docs/ckeditor5/latest/features/media-embed.html#including-previews-in-data
-                 * @see https://ckeditor.com/docs/ckeditor5/latest/features/media-embed.html#displaying-embedded-media-on-your-website
-                 */
-                'previewsInData'  => true,
-                /**
-                 * The names of providers with rendering functions (previews): dailymotion, spotify, youtube, vimeo.
-                 *
-                 * @see https://ckeditor.com/docs/ckeditor5/latest/api/module_media-embed_mediaembed-MediaEmbedConfig.html#member-providers
-                 *
-                 * So, we need to remove providers without rendering function
-                 * @see https://ckeditor.com/docs/ckeditor5/latest/features/media-embed.html#removing-media-providers
-                 */
-                'removeProviders' => ['instagram', 'twitter', 'googleMaps', 'flickr', 'facebook'],
-            ],
-
-            'uploadUrl'            => '/storage/images_admin',
-            'filebrowserUploadUrl' => '/storage/images_admin',
+            'uploadUrl'                 => '/storage/images_admin',
+            'filebrowserUploadUrl'      => '/storage/images_admin',
         ],
     ],
 
@@ -435,7 +340,7 @@ return [
     | Select default settings for datatable
     |
     */
-    'datatables'             => [],
+    'datatables'  => [],
 
     /*
     |--------------------------------------------------------------------------
@@ -445,7 +350,7 @@ return [
     | Highlight DataTables column on mouseover
     |
     */
-    'datatables_highlight'   => false,
+    'datatables_highlight' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -453,7 +358,7 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'breadcrumbs'            => true,
+    'breadcrumbs' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -466,10 +371,10 @@ return [
     | dt_autoupdate_color - color ProgressBar (can be null)
     |
     */
-    'dt_autoupdate'          => false,
+    'dt_autoupdate' => false,
     'dt_autoupdate_interval' => 5, //minutes
-    'dt_autoupdate_class'    => '',
-    'dt_autoupdate_color'    => '#dc3545',
+    'dt_autoupdate_class' => '',
+    'dt_autoupdate_color' => '#dc3545',
 
     /*
     |--------------------------------------------------------------------------
@@ -478,7 +383,7 @@ return [
     |
     */
 
-    'scroll_to_top'    => true,
+    'scroll_to_top' => true,
     'scroll_to_bottom' => true,
 
     /*

@@ -12,9 +12,10 @@ interface WysiwygMangerInterface
     public function getDefaultEditorId();
 
     /**
-     * @param  string  $editorId
-     * @param  WysiwygFilterInterface|null  $filter
-     * @param  string|null  $name
+     * @param string $editorId
+     * @param WysiwygFilterInterface|null $filter
+     * @param string|null $name
+     *
      * @return WysiwygEditorInterface
      */
     public function register($editorId, WysiwygFilterInterface $filter = null, $name = null);
@@ -25,22 +26,24 @@ interface WysiwygMangerInterface
     public function getFilters();
 
     /**
-     * @param  string  $editorId
+     * @param string $editorId
+     *
      * @return WysiwygEditorInterface|null
      */
     public function getEditor($editorId);
 
     /**
-     * @param  string  $editorId
+     * @param string $editorId
+     *
      * @return bool
      */
     public function loadEditor($editorId);
 
     /**
-     * @param  string  $editorId
-     * @param  string  $text
-     * @return string string
+     * @param string $editorId
+     * @param string $text
      *
+     * @return string string
      * @throws WysiwygException
      */
     public function applyFilter($editorId, $text);

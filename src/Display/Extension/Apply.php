@@ -21,7 +21,8 @@ class Apply extends Extension
     }
 
     /**
-     * @param  Closure  $applies
+     * @param Closure $applies
+     *
      * @return \SleepingOwl\Admin\Contracts\Display\DisplayInterface
      */
     public function set($applies)
@@ -38,7 +39,8 @@ class Apply extends Extension
     }
 
     /**
-     * @param  Closure  $apply
+     * @param Closure $apply
+     *
      * @return $this
      */
     public function push(Closure $apply)
@@ -61,7 +63,7 @@ class Apply extends Extension
     }
 
     /**
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param \Illuminate\Database\Eloquent\Builder $query
      */
     public function modifyQuery(Builder $query)
     {
